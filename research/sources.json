@@ -1,0 +1,26 @@
+{
+  "ignore_lines": ["^Send feedback$", "^Except as otherwise noted", "cookie", "^Skip to main content$"],
+  "sources": [
+    {"id": "google-spam-policies", "name": "Google Search spam policies",
+     "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+     "why": "Doorway abuse and scaled content rules apply directly to the city pages."},
+    {"id": "google-helpful-content", "name": "Google: Creating helpful, reliable, people-first content",
+     "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+     "why": "Quality guidance that decides whether service and city pages rank."},
+    {"id": "google-ranking-updates", "name": "Google Search ranking updates (status dashboard)",
+     "url": "https://status.search.google.com/products/rGHU1u87FJnkP6W2GwMi/history",
+     "why": "New core and spam updates; check rankings and calls when one rolls out."},
+    {"id": "google-business-profile-guidelines", "name": "Google Business Profile guidelines",
+     "url": "https://support.google.com/business/answer/3038177",
+     "why": "Confirms whether referral (lead-generation) businesses may have a Business Profile."},
+    {"id": "ftc-endorsement-faq", "name": "FTC Endorsement Guides: What People Are Asking",
+     "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+     "why": "How a paid relationship with providers must be disclosed."},
+    {"id": "fcc-robocalls-texts", "name": "FCC: Stop unwanted robocalls and texts",
+     "url": "https://www.fcc.gov/consumers/guides/stop-unwanted-robocalls-and-texts",
+     "why": "TCPA consent rules for any callback or text to a caller."},
+    {"id": "gwinnett-water-contact", "name": "Gwinnett County Water Resources contact page",
+     "url": "https://www.gwinnettcounty.com/government/departments/water/contact",
+     "why": "Source of the county 24/7 emergency number printed on the sewer-backup pages (678-376-7000)."}
+  ]
+}

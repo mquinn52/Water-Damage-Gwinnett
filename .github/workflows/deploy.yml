@@ -8,6 +8,11 @@ name: Deploy to GoDaddy
 on:
   push:
     branches: [main]
+    # Research snapshots, rules and workflow edits don't change the site
+    paths-ignore:
+      - "research/**"
+      - "RULES.md"
+      - ".github/**"
   workflow_dispatch:
     inputs:
       protocol:
@@ -37,4 +42,6 @@ jobs:
             **/.git*
             **/.git*/**
             .github/**
+            research/**
+            RULES.md
             README.md
