@@ -12,3 +12,11 @@ RewriteRule ^(index-backup[^/]*\.html|home\.html|waterdamagegwinnett-deploy-[^/]
 <FilesMatch "\.(zip|tar|gz|bak|sql)$">
   Require all denied
 </FilesMatch>
+
+# Pages and feeds must be revalidated, so a deploy shows up immediately
+# instead of an old cached copy. Images keep normal caching.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
