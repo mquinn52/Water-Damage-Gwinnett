@@ -1,0 +1,36 @@
+# Monthly reminder to invoice the call network. Under the BrokerCalls
+# agreement (section 4.3), calls not invoiced within 90 days of the end of
+# the month they were delivered are forfeited.
+name: Invoice reminder
+
+on:
+  schedule:
+    - cron: "0 13 1 * *"   # 1st of each month, 9:00 a.m. Eastern (EDT)
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open the reminder issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          month=$(date -u -d "$(date -u +%Y-%m-01) -1 day" +"%B %Y")
+          month_end=$(date -u -d "$(date -u +%Y-%m-01) -1 day" +%F)
+          deadline=$(date -u -d "$month_end +90 days" +"%B %-d, %Y")
+          gh label create invoice --color 0E8A16 --description "Monthly invoicing reminder" --force >/dev/null
+          gh issue create --label invoice \
+            --title "Invoice BrokerCalls for $month calls (deadline $deadline)" \
+            --body "Send BrokerCalls an invoice for billable calls delivered in **$month**.
+
+          - Pull the call report from the BrokerCalls system (their records in Retreaver are the system of record).
+          - Email the invoice; keep a copy and the call report.
+          - **Deadline: $deadline.** Calls not invoiced within 90 days of month end are forfeited (agreement section 4.3).
+          - Payment is due Net 15 after they receive payment from their client.
+
+          Close this issue once the invoice is sent. If no calls were delivered, just close it."

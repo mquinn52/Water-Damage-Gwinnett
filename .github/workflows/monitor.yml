@@ -1,0 +1,59 @@
+# Daily health check of the live site, and again after every deploy.
+# Opens a GitHub issue (GitHub emails you) when something breaks,
+# comments on it while it stays broken, and closes it once fixed.
+name: Site monitor
+
+on:
+  schedule:
+    - cron: "0 11 * * *"   # every day, 7:00 a.m. Eastern (EDT)
+  workflow_run:
+    workflows: ["Deploy to GoDaddy"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Give a fresh deploy a minute to settle
+        if: github.event_name == 'workflow_run'
+        run: sleep 60
+
+      - name: Run checks
+        id: check
+        continue-on-error: true
+        env:
+          SITE_URL: https://waterdamagegwinnett.com
+          REQUIRED_TEXT: "Water Damage Gwinnett||We may be paid a fee for each call::nos paguen una tarifa por cada llamada"
+          AFFILIATE_TAG: ""
+          ALLOWED_PHONES: "+16788330791,+16783767000"
+          SKIP_FILES: "privacy.html,terms.html"
+        run: python3 .github/scripts/site_check.py
+
+      - name: Open or update an issue
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create site-monitor --color B60205 --description "Opened by the daily site check" --force >/dev/null
+          num=$(gh issue list --label site-monitor --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body-file report.md
+          else
+            gh issue create --title "Site check failed: $(date -u +%F)" --label site-monitor --body-file report.md
+          fi
+
+      - name: Close the issue once everything passes
+        if: steps.check.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for num in $(gh issue list --label site-monitor --state open --json number --jq '.[].number'); do
+            gh issue close "$num" --comment "All checks passed on $(date -u +%F). Closing."
+          done
