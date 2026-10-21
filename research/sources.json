@@ -51,6 +51,18 @@
       "url": "https://www.federalregister.gov/",
       "query": "conditions%5Bagencies%5D%5B%5D=federal-communications-commission&conditions%5Bterm%5D=%22Telephone+Consumer+Protection+Act%22&order=newest&per_page=20&fields%5B%5D=title&fields%5B%5D=publication_date&fields%5B%5D=type&fields%5B%5D=html_url",
       "why": "New or amended TCPA rules on calls and texts (the FCC's consumer guide blocks automated checks)."
+    },
+    {
+      "id": "google-localized-versions",
+      "name": "Google: localized versions (hreflang)",
+      "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "why": "hreflang rules for the Spanish pages."
+    },
+    {
+      "id": "google-ai-optimization",
+      "name": "Google: Optimizing for generative AI search",
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "why": "What matters for AI answers, including local results."
     }
   ]
 }

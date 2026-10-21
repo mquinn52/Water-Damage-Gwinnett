@@ -6,7 +6,7 @@ below and opens an issue, plus a pull request revising this file when an API key
 is set, whenever one of them changes. Rules marked **[auto]** are enforced by the
 daily site monitor (`.github/workflows/monitor.yml`).
 
-**Last reviewed:** October 20, 2026
+**Last reviewed:** October 21, 2026
 **Operator:** Guardian Bridge LLC (d/b/a Water Damage Gwinnett)
 **Goal:** earn per-call fees by connecting people with water damage to local
 providers, honestly and lawfully. When a revenue idea conflicts with a rule, the rule wins.
@@ -51,5 +51,15 @@ providers, honestly and lawfully. When a revenue idea conflicts with a rule, the
 3. Submit the sitemap in Search Console and request indexing of key pages.
 4. Spanish pages kept in step with English ones.
 
+## 8. Growth and trust (added 2026-10-21)
+- 8.1 Publish freeze-season help (English and Spanish) before the first hard freeze each year: find the main shutoff valve, protect pipes, the first hour after a burst. Link the county's own guidance rather than restating it.
+- 8.2 Add a "How this service works" page (English and Spanish): the referral model, the per-call fee, that we're not a contractor and not the county, and what happens when someone calls.
+- 8.3 Never use county seals or imply a county or contractor affiliation. *Source: FTC Government and Business Impersonation Rule (2024); confirm against the FTC's own page before relying on details.*
+- 8.4 hreflang: every page lists itself and its twin, every pair links both ways, codes en/es, absolute URLs, plus x-default. Google ignores one-way annotations. *Source: [Google: localized versions](https://developers.google.com/search/docs/specialty/international/localized-versions).*
+- 8.5 With no Business Profile allowed, earn local visibility through plain-language answers, Organization markup and mentions from genuine local partners (HOAs, libraries, community groups).
+- 8.6 TCPA status: the FCC's one-to-one consent rule was vacated by the 11th Circuit in January 2025, but prior express written consent still governs automated marketing calls and texts. Keep the site inbound-call only. *Source: [Morrison Foerster summary](https://mofo.com/resources/insights/250130-eleventh-circuit-vacates-fcc-s-tcpa-one-to-one-consent-rule).*
+- 8.7 Social posts (Instagram @waterdamagegwinnett): practical how-to content (shutoff valves, first steps), the same disclosure as the site, no fear-based urgency.
+
 ## Changelog
+- 2026-10-21: Added growth and trust rules from verified research.
 - 2026-10-20: First version, distilled from the October 2026 audit, the BrokerCalls agreement review and research.
