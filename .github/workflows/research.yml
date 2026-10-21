@@ -33,6 +33,11 @@ jobs:
           code=$?
           if [ $code -eq 10 ]; then echo "changed=true" >> "$GITHUB_OUTPUT"; elif [ $code -ne 0 ]; then exit $code; fi
 
+      - name: Show this run's results on the run page
+        if: always()
+        run: |
+          { echo "## Research loop results"; if [ -s research/changes.md ]; then cat research/changes.md; else echo "No changes."; fi; } >> "$GITHUB_STEP_SUMMARY"
+
       - name: AI review (only if an ANTHROPIC_API_KEY secret is set)
         if: steps.watch.outputs.changed == 'true'
         env:
@@ -44,7 +49,7 @@ jobs:
         run: |
           git config user.name "research-bot"
           git config user.email "research-bot@users.noreply.github.com"
-          git add research/snapshots
+          git add research/snapshots research/failures.json
           if ! git diff --cached --quiet; then
             git commit -m "Research snapshots: $(date -u +%F)"
             git push
@@ -81,3 +86,14 @@ jobs:
             echo "## What changed"; cat research/changes.md
           } > issue.md
           gh issue create --label research --title "Policy sources changed: $(date -u +%F)" --body-file issue.md
+
+      - name: Flag sources that keep failing
+        if: hashFiles('research/stuck.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -s research/stuck.md ]; then
+            gh label create research --color 1D76DB --description "Opened by the weekly research loop" --force >/dev/null
+            { echo "These watched sources couldn't be checked three weeks running, so changes to them would be missed:"; echo; cat research/stuck.md; echo; echo "Replace the source in research/sources.json (or remove it), then close this issue."; } > stuck_issue.md
+            gh issue create --label research --title "Research sources need attention: $(date -u +%F)" --body-file stuck_issue.md
+          fi

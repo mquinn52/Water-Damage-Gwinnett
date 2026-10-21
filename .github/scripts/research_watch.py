@@ -6,9 +6,17 @@ text, and compares it with the snapshot saved in research/snapshots/. Writes:
   research/changes.md  – human-readable report of what changed (empty if none)
   research/changes.json – machine-readable list for the optional AI review
 First run for a source just records a baseline. Fetch failures are reported
-but never treated as a change, so a blocked site can't spam you.
+but never treated as a change, so a blocked site can't spam you; a source that
+fails 3 runs in a row is listed in research/stuck.md so the workflow can flag it.
+
+Source types:
+  "page" (default) – an ordinary web page; robots.txt is respected.
+  "federal_register" – the Federal Register's public API (built for programs);
+     "query" holds the API query string. The snapshot is the list of matching
+     documents (date, type, title, link), so a new rule or notice shows up as
+     an added line.
 """
-import hashlib, html, json, os, re, sys, difflib, urllib.request
+import hashlib, json, os, re, sys, difflib, urllib.parse, urllib.request, urllib.robotparser
 from html.parser import HTMLParser
 
 ROOT = "research"
@@ -60,6 +68,34 @@ def fetch_text(url):
     return p.text()
 
 
+_robots = {}
+def robots_allow(url):
+    parts = urllib.parse.urlsplit(url)
+    base = f"{parts.scheme}://{parts.netloc}"
+    if base not in _robots:
+        rp = urllib.robotparser.RobotFileParser()
+        try:
+            req = urllib.request.Request(base + "/robots.txt", headers=UA)
+            with urllib.request.urlopen(req, timeout=20) as r:
+                rp.parse(r.read().decode("utf-8", "replace").splitlines())
+        except Exception:
+            rp.parse([])          # no readable robots.txt: allowed
+        _robots[base] = rp
+    return _robots[base].can_fetch(UA["User-Agent"], url)
+
+
+def fetch_federal_register(query):
+    url = "https://www.federalregister.gov/api/v1/documents.json?" + query
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=45) as r:
+        data = json.load(r)
+    rows = [f"{d.get('publication_date','')} | {d.get('type','')} | {d.get('title','').strip()} | {d.get('html_url','')}"
+            for d in data.get("results", [])]
+    header = f"Federal Register documents matching: {urllib.parse.unquote(query)}"
+    # pad so a short-but-valid list isn't mistaken for a blocked page
+    return header + "\n" + "\n".join(sorted(rows, reverse=True)) + "\n" + "-" * 300
+
+
 def clean(text, ignore):
     out = []
     for line in text.splitlines():
@@ -72,18 +108,30 @@ def clean(text, ignore):
 cfg = json.load(open(os.path.join(ROOT, "sources.json")))
 GLOBAL_IGNORE = cfg.get("ignore_lines", [])
 changes, failures, baselines = [], [], []
+FAILS = os.path.join(ROOT, "failures.json")
+fail_count = json.load(open(FAILS)) if os.path.exists(FAILS) else {}
 
 for src in cfg["sources"]:
     sid, url = src["id"], src["url"]
     path = os.path.join(SNAP, f"{sid}.txt")
     try:
-        text = clean(fetch_text(url), GLOBAL_IGNORE + src.get("ignore_lines", []))
+        if src.get("type") == "federal_register":
+            text = fetch_federal_register(src["query"]) + "\n"
+        else:
+            if not robots_allow(url):
+                failures.append(f"- **{src['name']}** ({url}): the site's robots.txt asks automated visitors not to fetch it; skipped")
+                fail_count[sid] = fail_count.get(sid, 0) + 1
+                continue
+            text = clean(fetch_text(url), GLOBAL_IGNORE + src.get("ignore_lines", []))
     except Exception as e:
         failures.append(f"- **{src['name']}** ({url}): couldn't fetch — {e}")
+        fail_count[sid] = fail_count.get(sid, 0) + 1
         continue
     if len(text) < 300:
         failures.append(f"- **{src['name']}** ({url}): page came back nearly empty (blocked or changed format); snapshot kept")
+        fail_count[sid] = fail_count.get(sid, 0) + 1
         continue
+    fail_count.pop(sid, None)
     old = open(path, encoding="utf-8").read() if os.path.exists(path) else None
     if old is None:
         baselines.append(src["name"])
@@ -98,6 +146,13 @@ for src in cfg["sources"]:
 
 with open(os.path.join(ROOT, "changes.json"), "w") as f:
     json.dump(changes, f, indent=1)
+with open(FAILS, "w") as f:
+    json.dump(fail_count, f, indent=1, sort_keys=True)
+names = {s["id"]: (s["name"], s["url"]) for s in cfg["sources"]}
+stuck = [f"- **{names[k][0]}** ({names[k][1]}): failed {v} runs in a row" for k, v in sorted(fail_count.items())
+         if v == 3 and k in names]   # flag once, on the third straight failure
+with open(os.path.join(ROOT, "stuck.md"), "w") as f:
+    f.write("\n".join(stuck))
 
 report = []
 if changes:
