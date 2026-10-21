@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YBEBBTKPSW');
+  // Google Analytics 4 loads only if the visitor hasn't opted out
+  // (Global Privacy Control signal or the opt-out on privacy.html).
+  (function () {
+    var optedOut = false;
+    try { optedOut = localStorage.getItem('wdg_analytics_optout') === '1'; } catch (e) {}
+    if (navigator.globalPrivacyControl === true || optedOut) {
+      window.gtag = function () {};
+      return;
+    }
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-YBEBBTKPSW');
+  })();
 
   // Tap-to-call tracking: GA4 event on every phone-link tap.
   document.addEventListener('click', function (e) {
@@ -115,7 +127,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "HomeAndConstructionBusiness",
+      "@type": "Organization",
       "name": "Water Damage Gwinnett",
       "url": "https://waterdamagegwinnett.com/mold-cleanup-guide.html",
       "description": "Referral and call-routing service connecting property owners in Lawrenceville, GA 30044 and Gwinnett County with independent local mold remediation contractors. Publishes educational guides on mold science and cleanup methods.",
@@ -336,7 +348,7 @@
       <p class="footer-note">Email: <a href="mailto:contact@waterdamagegwinnett.com" style="color:inherit">contact@waterdamagegwinnett.com</a></p>
     </div>
   <div class="shell" style="padding-bottom:26px"><nav aria-label="Service areas" style="font-size:13px;color:var(--muted)">Service areas: <a href="index.html" style="color:var(--aqua)">Lawrenceville</a> · <a href="duluth.html" style="color:var(--aqua)">Duluth</a> · <a href="suwanee.html" style="color:var(--aqua)">Suwanee</a> · <a href="snellville.html" style="color:var(--aqua)">Snellville</a> · <a href="norcross.html" style="color:var(--aqua)">Norcross</a> · <a href="buford.html" style="color:var(--aqua)">Buford</a> · <a href="dacula.html" style="color:var(--aqua)">Dacula</a> · <a href="lilburn.html" style="color:var(--aqua)">Lilburn</a> · <a href="grayson.html" style="color:var(--aqua)">Grayson</a> · <a href="loganville.html" style="color:var(--aqua)">Loganville</a> · <a href="water-damage-restoration-process.html" style="color:var(--aqua)">Restoration Process</a> · <a href="sewer-backup-gwinnett-county.html" style="color:var(--aqua)">Sewer Backup: Who to Call</a> · <a href="fire-smoke-damage.html" style="color:var(--aqua)">Fire &amp; Smoke Damage</a> · <a href="mold-remediation.html" style="color:var(--aqua)">Mold Remediation</a> · <a href="mold-cleanup-guide.html" style="color:var(--aqua)">Mold Cleanup Science</a> · <a href="fire-science-guide.html" style="color:var(--aqua)">Fire Science</a> · <a href="plumbing-pipe-guide.html" style="color:var(--aqua)">Plumbing &amp; Pipes</a> · <a href="sewer-maintenance-guide.html" style="color:var(--aqua)">Sewer &amp; Drainage</a> · <a href="burst-pipe.html" style="color:var(--aqua)">Burst Pipe</a> · <a href="flooded-basement.html" style="color:var(--aqua)">Flooded Basement</a> · <a href="sewage-backup.html" style="color:var(--aqua)">Sewage Backup</a></nav><p style="font-size:13px;color:var(--muted);margin:10px 0 0"><a href="privacy.html" style="color:var(--aqua)">Privacy Policy</a> · <a href="terms.html" style="color:var(--aqua)">Terms of Service</a></p></div>
-  <p class="footer-note" data-disclaimer="DISCLAIMER-5PART" style="max-width:100%">This site is a free service to assist homeowners in connecting with local service contractors. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p>
+  <p class="footer-note" data-disclaimer="DISCLAIMER-5PART" style="max-width:100%">This site is free for homeowners to use. We are paid by the participating providers or call networks we route calls to, and calls are routed based on location and availability, not a ranking of quality. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p>
   </footer>
   <div class="toast" role="status" aria-live="polite">Copied</div>
   </body>

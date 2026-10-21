@@ -1,13 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YBEBBTKPSW');
+  // Google Analytics 4 loads only if the visitor hasn't opted out
+  // (Global Privacy Control signal or the opt-out on privacy.html).
+  (function () {
+    var optedOut = false;
+    try { optedOut = localStorage.getItem('wdg_analytics_optout') === '1'; } catch (e) {}
+    if (navigator.globalPrivacyControl === true || optedOut) {
+      window.gtag = function () {};
+      return;
+    }
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-YBEBBTKPSW');
+  })();
   // Tap-to-call tracking: GA4 event on every phone-link tap.
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="tel:"]');
@@ -62,7 +74,7 @@
   </header>
   <main>
     <div class="shell">
-      <p class="updated">Last updated: October 16, 2026</p>
+      <p class="updated">Last updated: October 20, 2026</p>
 
       <h2>Who we are</h2>
       <p>Water Damage Gwinnett ("we," "us") operates waterdamagegwinnett.com, a referral and call-routing service that connects property owners in the Lawrenceville, Georgia area with independent restoration service providers. We are not a restoration contractor and do not perform restoration work.</p>
@@ -71,7 +83,7 @@
       <ul>
         <li><strong>Call information.</strong> When you call the number on our site, our call-tracking provider logs your phone number, the date, time, and duration of the call. Calls may be recorded for quality assurance; you will hear a recording disclosure before being connected.</li>
         <li><strong>Information you provide.</strong> If you contact us by email or form, we receive your name, contact details, and the contents of your message.</li>
-        <li><strong>Website analytics.</strong> We may use standard analytics tools that collect anonymized usage data (pages visited, device type, approximate location) to improve the site.</li>
+        <li><strong>Website analytics.</strong> We use Google Analytics 4, which sets cookies and collects usage data such as pages visited, device and browser type, approximate location (derived from IP address), and referring site. We also record when someone taps a phone link, logging only the page and our tracking number &mdash; not your number. Google processes this data under <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">its own privacy policy</a>. We use it only to improve the site, not for advertising.</li>
       </ul>
 
       <h2>How we use your information</h2>
@@ -90,6 +102,12 @@
         <li><strong>Legal requirements.</strong> We may disclose information if required by law or to protect our rights.</li>
       </ul>
 
+      <h2>Callbacks and text messages</h2>
+      <p>The provider your call is routed to receives your phone number and may call or text you back about the service request you made, for example if the call drops. We don't use your number for marketing, we don't send marketing texts, and we don't give your number to anyone for marketing. If a provider contacts you in a way you didn't ask for, tell us at the address below.</p>
+
+      <h2>How we're paid</h2>
+      <p>The service is free for homeowners. We are paid by the participating providers or call networks we route calls to. Calls are routed based on location and availability, not a ranking of quality.</p>
+
       <h2>Call recording</h2>
       <p>Calls placed through our number may be recorded. A disclosure plays before you are connected. By staying on the line after the disclosure, you consent to recording. Recordings are retained for up to 90 days and used only for quality assurance and dispute resolution.</p>
 
@@ -97,8 +115,10 @@
       <p>You may request a copy of, correction to, or deletion of your personal information by emailing <a href="mailto:contact@waterdamagegwinnett.com">contact@waterdamagegwinnett.com</a>. To help us locate your information, include the name and phone number or email address you used when contacting us, and describe what you are asking for. We respond to verifiable requests within 45 days.</p>
       <ul>
         <li><strong>Opt out.</strong> We do not sell your personal information. If you want us to stop sharing your information with service providers for any purpose beyond routing your call, email us at the address above with "Privacy Request" in the subject line.</li>
-        <li><strong>Analytics.</strong> You may opt out of analytics by enabling Do Not Track in your browser.</li>
+        <li><strong>Analytics.</strong> If your browser sends a <a href="https://globalprivacycontrol.org/" target="_blank" rel="noopener">Global Privacy Control</a> signal, we treat it as an opt-out and don&rsquo;t load Google Analytics. You can also turn analytics off on this browser with the button below, or use Google&rsquo;s <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">opt-out browser add-on</a>.</li>
       </ul>
+      <p><button type="button" id="analyticsToggle" style="font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer">Turn off analytics on this browser</button></p>
+      <p id="analyticsStatus" role="status"></p>
 
       <h2>How long we keep your information</h2>
       <ul>
@@ -125,7 +145,34 @@
     <div class="shell">
       Water Damage Gwinnett · Lawrenceville, GA 30044 · <a href="/terms.html">Terms of Service</a> · <a href="/">Home</a>
     </div>
-  <div class="shell"><p data-disclaimer="DISCLAIMER-5PART" style="font-size:13px;color:var(--muted);margin:12px 0 0">This site is a free service to assist homeowners in connecting with local service contractors. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p></div>
+  <div class="shell"><p data-disclaimer="DISCLAIMER-5PART" style="font-size:13px;color:var(--muted);margin:12px 0 0">This site is free for homeowners to use. We are paid by the participating providers or call networks we route calls to, and calls are routed based on location and availability, not a ranking of quality. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p></div>
   </footer>
+<script>
+(function () {
+  var btn = document.getElementById('analyticsToggle');
+  var status = document.getElementById('analyticsStatus');
+  if (!btn) return;
+  function get() { try { return localStorage.getItem('wdg_analytics_optout') === '1'; } catch (e) { return false; } }
+  function render() {
+    if (navigator.globalPrivacyControl === true) {
+      btn.disabled = true;
+      status.textContent = 'Your browser is sending a Global Privacy Control signal, so analytics is already off.';
+      return;
+    }
+    var off = get();
+    btn.textContent = off ? 'Turn analytics back on' : 'Turn off analytics on this browser';
+    status.textContent = off ? 'Analytics is off on this browser.' : '';
+  }
+  btn.addEventListener('click', function () {
+    try {
+      if (get()) { localStorage.removeItem('wdg_analytics_optout'); }
+      else { localStorage.setItem('wdg_analytics_optout', '1'); }
+    } catch (e) { status.textContent = 'Your browser blocked saving this choice; try Google\u2019s opt-out add-on instead.'; return; }
+    render();
+    if (get()) { status.textContent = 'Analytics is off on this browser. It stops from your next page load.'; }
+  });
+  render();
+})();
+</script>
 </body>
 </html>

@@ -1,3 +1,14 @@
 RewriteEngine On
+
+# One canonical host: send www to the bare domain
 RewriteCond %{HTTP_HOST} ^www\.waterdamagegwinnett\.com$ [NC]
 RewriteRule ^(.*)$ https://waterdamagegwinnett.com/$1 [R=301,L]
+
+# Old backups, deploy archives and the hosting placeholder page are gone for good.
+# 410 tells Google to drop them; they should also be deleted from the server.
+RewriteRule ^(index-backup[^/]*\.html|home\.html|waterdamagegwinnett-deploy-[^/]*\.zip)$ - [G,L]
+
+# Never serve archive files from the web root
+<FilesMatch "\.(zip|tar|gz|bak|sql)$">
+  Require all denied
+</FilesMatch>

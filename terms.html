@@ -1,13 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YBEBBTKPSW');
+  // Google Analytics 4 loads only if the visitor hasn't opted out
+  // (Global Privacy Control signal or the opt-out on privacy.html).
+  (function () {
+    var optedOut = false;
+    try { optedOut = localStorage.getItem('wdg_analytics_optout') === '1'; } catch (e) {}
+    if (navigator.globalPrivacyControl === true || optedOut) {
+      window.gtag = function () {};
+      return;
+    }
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-YBEBBTKPSW');
+  })();
   // Tap-to-call tracking: GA4 event on every phone-link tap.
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="tel:"]');
@@ -63,7 +75,7 @@
   </header>
   <main>
     <div class="shell">
-      <p class="updated">Last updated: October 8, 2026</p>
+      <p class="updated">Last updated: October 20, 2026</p>
 
       <div class="notice">
         <strong>Important:</strong> Water Damage Gwinnett is a referral and call-routing service, <strong>not</strong> a restoration contractor. We connect you with independent service providers; we do not perform restoration work ourselves.
@@ -72,31 +84,34 @@
       <h2>1. Our service</h2>
       <p>Water Damage Gwinnett operates waterdamagegwinnett.com to connect property owners experiencing water damage with independent restoration service providers in the Lawrenceville, Georgia area. When you call the number on our site, your call is routed to a third-party provider.</p>
 
-      <h2>2. No contractor relationship</h2>
+      <h2>2. How we're paid</h2>
+      <p>Our service is free for homeowners. We are paid by the participating providers or call networks we route calls to. Calls are routed based on location and availability; routing is not a recommendation or a ranking of any provider&rsquo;s quality.</p>
+
+      <h2>3. No contractor relationship</h2>
       <p>We are not a party to any agreement between you and a service provider. Service availability, response times, pricing, licensing, insurance coverage, and workmanship are determined solely by the provider. We make no guarantees about any provider's services, and we are not responsible for their acts or omissions.</p>
 
-      <h2>3. No emergency service guarantee</h2>
+      <h2>4. No emergency service guarantee</h2>
       <p>While our service is designed for urgent situations, we do not guarantee immediate response or availability. If you face an immediate threat to life or safety, call 911.</p>
 
-      <h2>4. Call recording consent</h2>
+      <h2>5. Call recording consent</h2>
       <p>Calls may be recorded for quality assurance. A disclosure plays before connection; by remaining on the line, you consent to recording as described in our <a href="/privacy.html">Privacy Policy</a>.</p>
 
-      <h2>5. Acceptable use</h2>
+      <h2>6. Acceptable use</h2>
       <p>You agree not to misuse the service, including placing prank or harassing calls, attempting to disrupt call routing, or using the service for any unlawful purpose.</p>
 
-      <h2>6. Intellectual property</h2>
+      <h2>7. Intellectual property</h2>
       <p>All content on this site — text, design, and branding — is owned by Water Damage Gwinnett or its licensors and may not be reproduced without permission.</p>
 
-      <h2>7. Limitation of liability</h2>
+      <h2>8. Limitation of liability</h2>
       <p>To the maximum extent permitted by law, Water Damage Gwinnett shall not be liable for any indirect, incidental, or consequential damages arising from your use of the service or any services provided by third-party providers. Our total liability shall not exceed $100.</p>
 
-      <h2>8. Changes to these terms</h2>
+      <h2>9. Changes to these terms</h2>
       <p>We may update these terms from time to time. Continued use of the service after changes constitutes acceptance.</p>
 
-      <h2>9. Governing law</h2>
+      <h2>10. Governing law</h2>
       <p>These terms are governed by the laws of the State of Georgia. Any disputes shall be resolved in the state or federal courts located in Gwinnett County, Georgia.</p>
 
-      <h2>10. Contact</h2>
+      <h2>11. Contact</h2>
       <p>Questions about these terms: <a href="mailto:contact@waterdamagegwinnett.com">contact@waterdamagegwinnett.com</a></p>
     </div>
   </main>
@@ -104,7 +119,7 @@
     <div class="shell">
       Water Damage Gwinnett · Lawrenceville, GA 30044 · <a href="/privacy.html">Privacy Policy</a> · <a href="/">Home</a>
     </div>
-  <div class="shell"><p data-disclaimer="DISCLAIMER-5PART" style="font-size:13px;color:var(--muted);margin:12px 0 0">This site is a free service to assist homeowners in connecting with local service contractors. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p></div>
+  <div class="shell"><p data-disclaimer="DISCLAIMER-5PART" style="font-size:13px;color:var(--muted);margin:12px 0 0">This site is free for homeowners to use. We are paid by the participating providers or call networks we route calls to, and calls are routed based on location and availability, not a ranking of quality. All contractors are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.</p></div>
   </footer>
 </body>
 </html>

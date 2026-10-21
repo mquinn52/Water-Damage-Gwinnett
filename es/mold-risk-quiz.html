@@ -2,13 +2,25 @@
 <html lang="es">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YBEBBTKPSW');
+  // Google Analytics 4 loads only if the visitor hasn't opted out
+  // (Global Privacy Control signal or the opt-out on privacy.html).
+  (function () {
+    var optedOut = false;
+    try { optedOut = localStorage.getItem('wdg_analytics_optout') === '1'; } catch (e) {}
+    if (navigator.globalPrivacyControl === true || optedOut) {
+      window.gtag = function () {};
+      return;
+    }
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-YBEBBTKPSW');
+  })();
 
   // Tap-to-call tracking: GA4 event on every phone-link tap.
   document.addEventListener('click', function (e) {
@@ -127,7 +139,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "HomeAndConstructionBusiness",
+      "@type": "Organization",
       "name": "Water Damage Gwinnett",
       "url": "https://waterdamagegwinnett.com/es/mold-risk-quiz.html",
       "description": "Cuestionario de evaluación de riesgo de moho y servicio de referidos y enrutamiento de llamadas que conecta a propietarios en Lawrenceville, GA 30044 y el condado de Gwinnett con contratistas locales independientes de remediación de moho.",
@@ -239,6 +251,7 @@
         <div class="shell">
           <h2>¿Tengo un problema de moho?</h2>
           <p class="lead">Seis preguntas rápidas sobre humedad, olores y lo que ha visto en su hogar. Esto es una lista de verificación, no una inspección &mdash; pero le dirá si vale la pena llamar a un profesional local. Sus respuestas nunca salen de su navegador.</p>
+          <p class="lead" style="font-size:15px">Contexto: la EPA de EE. UU. recomienda secar las áreas dañadas por agua en un plazo de 24 a 48 horas para ayudar a prevenir el moho (<a href="https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home" target="_blank" rel="noopener">EPA: guía breve sobre moho y humedad, en inglés</a>).</p>
           <div class="quiz-wrap">
             <p class="quiz-progress" id="quiz-progress">Pregunta <span id="quiz-qnum">1</span> de 6</p>
             <div class="quiz-card" id="quiz-card">
@@ -316,7 +329,7 @@
       <p class="footer-note">Correo: <a href="mailto:contact@waterdamagegwinnett.com" style="color:inherit">contact@waterdamagegwinnett.com</a></p>
     </div>
   <div class="shell" style="padding-bottom:26px"><nav aria-label="Áreas de servicio" style="font-size:13px;color:var(--muted)">Áreas de servicio: <a href="index.html" style="color:var(--aqua)">Lawrenceville</a> · <a href="duluth.html" style="color:var(--aqua)">Duluth</a> · <a href="suwanee.html" style="color:var(--aqua)">Suwanee</a> · <a href="snellville.html" style="color:var(--aqua)">Snellville</a> · <a href="norcross.html" style="color:var(--aqua)">Norcross</a> · <a href="buford.html" style="color:var(--aqua)">Buford</a> · <a href="dacula.html" style="color:var(--aqua)">Dacula</a> · <a href="lilburn.html" style="color:var(--aqua)">Lilburn</a> · <a href="grayson.html" style="color:var(--aqua)">Grayson</a> · <a href="loganville.html" style="color:var(--aqua)">Loganville</a> · <a href="water-damage-restoration-process.html" style="color:var(--aqua)">Proceso de restauración</a> · <a href="sewer-backup-gwinnett-county.html" style="color:var(--aqua)">Reflujo: a quién llamar</a> · <a href="fire-smoke-damage.html" style="color:var(--aqua)">Daños por fuego y humo</a> · <a href="mold-remediation.html" style="color:var(--aqua)">Remediación de moho</a> · <a href="mold-cleanup-guide.html" style="color:var(--aqua)">Ciencia de la limpieza del moho</a> · <a href="fire-science-guide.html" style="color:var(--aqua)">Ciencia del fuego</a> · <a href="plumbing-pipe-guide.html" style="color:var(--aqua)">Plomería y tuberías</a> · <a href="sewer-maintenance-guide.html" style="color:var(--aqua)">Alcantarillado y drenaje</a> · <a href="burst-pipe.html" style="color:var(--aqua)">Tubería reventada</a> · <a href="flooded-basement.html" style="color:var(--aqua)">Sótano inundado</a> · <a href="sewage-backup.html" style="color:var(--aqua)">Respaldo de alcantarilla</a></nav><p style="font-size:13px;color:var(--muted);margin:10px 0 0"><a href="../privacy.html" style="color:var(--aqua)">Política de privacidad</a> · <a href="../terms.html" style="color:var(--aqua)">Términos del servicio</a></p></div>
-  <p class="footer-note" data-disclaimer="DISCLAIMER-5PART" style="max-width:100%">Este sitio es un servicio gratuito para ayudar a los propietarios a conectarse con contratistas de servicios locales. Todos los contratistas son independientes y este sitio no garantiza ni avala ningún trabajo realizado. Es responsabilidad del propietario verificar que el contratista contratado cuente con la licencia y el seguro necesarios para el trabajo a realizar. Todas las personas que aparecen en una foto o video son actores o modelos y no contratistas listados en este sitio.</p>
+  <p class="footer-note" data-disclaimer="DISCLAIMER-5PART" style="max-width:100%">Este sitio es gratuito para los propietarios. Nos pagan los proveedores o redes de llamadas participantes a los que dirigimos las llamadas, y las llamadas se dirigen según la ubicación y la disponibilidad, no según una clasificación de calidad. Todos los contratistas son independientes y este sitio no garantiza ni avala ningún trabajo realizado. Es responsabilidad del propietario verificar que el contratista contratado cuente con la licencia y el seguro necesarios para el trabajo a realizar. Todas las personas que aparecen en una foto o video son actores o modelos y no contratistas listados en este sitio.</p>
   </footer>
   <div class="toast" role="status" aria-live="polite">Copiado</div>
   <script>
