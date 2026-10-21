@@ -12,6 +12,7 @@ on:
     paths-ignore:
       - "research/**"
       - "RULES.md"
+      - "CLAUDE.md"
       - ".github/**"
   workflow_dispatch:
     inputs:
@@ -44,4 +45,5 @@ jobs:
             .github/**
             research/**
             RULES.md
+            CLAUDE.md
             README.md

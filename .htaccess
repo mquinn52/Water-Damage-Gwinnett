@@ -20,3 +20,8 @@ RewriteRule ^(index-backup[^/]*\.html|home\.html|waterdamagegwinnett-deploy-[^/]
     Header set Cache-Control "no-cache"
   </FilesMatch>
 </IfModule>
+
+# Notes files in the repository are never public
+<FilesMatch "^(RULES|README|CLAUDE)\.md$">
+  Require all denied
+</FilesMatch>

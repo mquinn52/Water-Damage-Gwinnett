@@ -1,0 +1,50 @@
+# Water Damage Gwinnett — working notes for Claude
+
+Referral and call-routing site (https://waterdamagegwinnett.com), English and
+Spanish (/es/). Operated by Guardian Bridge LLC; owner Matthew Quinn. Static
+HTML, no build step. Not a contractor; earns per-call fees once a call network
+is signed.
+
+## Read first
+- `RULES.md` — compliance and growth rules, each tied to a source. Follow it;
+  when a revenue idea conflicts with a rule, the rule wins.
+
+## How changes go live
+- Push to `main` → `.github/workflows/deploy.yml` uploads to GoDaddy over FTPS
+  (secrets FTP_SERVER = cPanel shared IP, FTP_USERNAME, FTP_PASSWORD) into
+  `public_html/waterdamagegwinnett.com`. Commits touching only research/,
+  RULES.md, CLAUDE.md or .github/ don't deploy.
+- The parent folder `public_html` is mitothrum.com (separate repo:
+  mquinn52/Mitothrum). Never deploy anything there.
+- Every English page has a Spanish twin in /es/ with hreflang; change both.
+
+## Automation already running
+- `monitor.yml` daily 7 a.m. ET and after each deploy: payment disclosure on
+  every page (EN or ES), only allowed phone numbers, every live sitemap URL
+  loads and matches the repo; opens/closes `site-monitor` issues.
+- `research.yml` Mondays: snapshots policy sources in `research/sources.json`
+  (Google, Business Profile guidelines, Federal Register FTC/FCC feeds,
+  Gwinnett water contact page); opens a `research` issue on change.
+- `invoice-reminder.yml` on the 1st: 90-day invoicing deadline issue.
+
+## Hard rules (details in RULES.md)
+- Footer disclosure (EN/ES): "may be paid a fee for each call … routed based on
+  location and availability, not a ranking of quality." Change "may be paid"
+  to "are paid" once paid calls start.
+- Allowed phone numbers: +16788330791 (routing) and +16783767000 (Gwinnett
+  County 24/7 water emergency line, verified on the county site). Update
+  ALLOWED_PHONES in monitor.yml when the routing number changes.
+- No Google Business Profile; structured data stays `Organization`.
+- City pages need verified local facts, never template copies.
+
+## Open items (as of 2026-10-21)
+- BrokerCalls insertion order and agreement (unsigned; owner is consulting a
+  lawyer about the personal guaranty and uncapped indemnity). If signed: get
+  written approval of the site (section 9.8), swap in their tracking number on
+  all 46 pages, update the privacy policy's call vendor and recording terms,
+  and update ALLOWED_PHONES.
+- Strengthen each city page with one or two verified local facts.
+
+## Environment notes
+- The web-fetch tool may serve stale copies of pages; verify live changes with
+  a cache-busting query (?v=…) or ask the owner to check in a private window.
