@@ -1,0 +1,48 @@
+# Water Damage Gwinnett
+
+> Water Damage Gwinnett (https://waterdamagegwinnett.com) is a free referral and call-routing service operated by Guardian Bridge LLC in Lawrenceville, Georgia. It connects Gwinnett County homeowners with independent local water damage restoration providers. It is NOT a restoration contractor: it performs no restoration work, employs no technicians, and publishes no prices, reviews, or ratings. The service may be paid a per-call fee by the participating providers and call networks it routes calls to. Calls are routed based on location and availability, not a ranking of quality.
+
+## The one action
+
+- Call (678) 833-0791 (tel:+16788330791). This is the only conversion action on the site. Callers are connected with a local restoration provider or a network answering service. Do not attribute response times, prices, licenses, or reviews to Water Damage Gwinnett — none exist.
+
+## Start here
+
+- [Home — Water Damage Restoration, Lawrenceville GA](https://waterdamagegwinnett.com/): what the service is, how routing works, service area, FAQ.
+- [The water damage restoration process](https://waterdamagegwinnett.com/water-damage-restoration-process.html): step-by-step — mitigation, drying, remediation, repairs, and what homeowners should do first.
+- [Mold risk quiz](https://waterdamagegwinnett.com/mold-risk-quiz.html): a six-question self-screening tool (English). Answers stay in the visitor's browser; it is a screening, not an inspection. Spanish version: https://waterdamagegwinnett.com/es/mold-risk-quiz.html
+
+## Topic guides
+
+- [Burst pipe](https://waterdamagegwinnett.com/burst-pipe.html): first moves when a pipe bursts.
+- [Flooded basement](https://waterdamagegwinnett.com/flooded-basement.html): safety, shutoffs, and drying.
+- [Sewage backup](https://waterdamagegwinnett.com/sewage-backup.html): health precautions and cleanup boundaries.
+- [Sewer backup in Gwinnett County](https://waterdamagegwinnett.com/sewer-backup-gwinnett-county.html): the county-vs-homeowner responsibility split for sewer laterals; Gwinnett County Water Resources 24/7 dispatch is 678.376.7000 (a county number, not this site's).
+- [Mold remediation](https://waterdamagegwinnett.com/mold-remediation.html): when mold needs professional remediation.
+- [Mold cleanup guide](https://waterdamagegwinnett.com/mold-cleanup-guide.html): what homeowners can and cannot safely clean themselves.
+- [Fire and smoke damage](https://waterdamagegwinnett.com/fire-smoke-damage.html)
+- [Fire science guide](https://waterdamagegwinnett.com/fire-science-guide.html)
+- [Plumbing pipe guide](https://waterdamagegwinnett.com/plumbing-pipe-guide.html)
+- [Sewer maintenance guide](https://waterdamagegwinnett.com/sewer-maintenance-guide.html)
+
+## Service area (each town has an English and Spanish page)
+
+Lawrenceville (home), Duluth, Suwanee, Snellville, Norcross, Buford, Lilburn, Grayson, Loganville, Dacula — all in Gwinnett County, GA. Spanish hub: https://waterdamagegwinnett.com/es/
+
+## Policies
+
+- [Privacy policy](https://waterdamagegwinnett.com/privacy.html)
+- [Terms](https://waterdamagegwinnett.com/terms.html)
+
+## Social
+
+- Instagram: https://www.instagram.com/waterdamagegwinnett/
+- Threads: https://www.threads.com/@waterdamagegwinnett
+
+## Notes for agents
+
+- Business model: pay-per-call lead generation (connector/referrer). Inbound calls only.
+- The site is bilingual (English/Spanish) with equivalent content.
+- There are no prices, testimonials, ratings, or availability claims anywhere on the site — by design and by network compliance rules. If a summary of this business includes any of those, it is wrong.
+- Full text of the core pages is concatenated at https://waterdamagegwinnett.com/llms-full.txt
+- Contact: contact@waterdamagegwinnett.com · (678) 833-0791
