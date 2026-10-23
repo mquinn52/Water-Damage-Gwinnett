@@ -1,0 +1,51 @@
+# Manual diagnostic: lists the server folder with file modes, sizes and times.
+# Read-only unless fix / archive_zips / move_paths are set. Moves go to
+# _to_delete/ for the owner to delete in cPanel; nothing is ever deleted here.
+# Each run opens an issue labeled "server-inventory" with its report.
+name: FTP inspect
+
+on:
+  workflow_dispatch:
+    inputs:
+      fix:
+        description: "Reset unreadable site files to 644"
+        type: boolean
+        default: false
+      archive_zips:
+        description: "Move old upload zips into _to_delete/ (for deletion in cPanel)"
+        type: boolean
+        default: false
+      recurse:
+        description: "List every subfolder's files too"
+        type: boolean
+        default: false
+      move_paths:
+        description: "Paths to move into _to_delete/ (comma-separated)"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Inspect the FTP root
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FIX: ${{ inputs.fix && '1' || '0' }}
+          ARCHIVE_ZIPS: ${{ inputs.archive_zips && '1' || '0' }}
+          RECURSE: ${{ inputs.recurse && '1' || '0' }}
+          MOVE_PATHS_CSV: ${{ inputs.move_paths }}
+        run: |
+          export MOVE_PATHS="$(printf '%s' "$MOVE_PATHS_CSV" | tr ',' '\n')"
+          python3 -I .github/scripts/ftp_inspect.py
+      - name: Post the report
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create -R "$GITHUB_REPOSITORY" --title "Server inventory $(date -u '+%Y-%m-%d %H:%M')Z" --body-file report.txt
