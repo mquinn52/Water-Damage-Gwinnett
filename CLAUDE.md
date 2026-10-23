@@ -12,10 +12,17 @@ is signed.
 ## How changes go live
 - Push to `main` → `.github/workflows/deploy.yml` uploads to GoDaddy over FTPS
   (secrets FTP_SERVER = cPanel shared IP, FTP_USERNAME, FTP_PASSWORD) into
-  `public_html/waterdamagegwinnett.com`. Commits touching only research/,
-  RULES.md, CLAUDE.md or .github/ don't deploy.
-- The parent folder `public_html` is mitothrum.com (separate repo:
-  mquinn52/Mitothrum). Never deploy anything there.
+  `public_html`, which is this site's folder (the FTP account is rooted there,
+  `server-dir: ./`). Commits touching only research/, RULES.md, CLAUDE.md or
+  .github/ don't deploy.
+- `public_html/mitothrum.com/` is the mitothrum.com site (separate repo:
+  mquinn52/Mitothrum, its own FTP account). Never deploy into or change that
+  subfolder from here. (Corrected Oct 23, 2026 from a server inventory — an
+  earlier note had the layout reversed.)
+- Never upload or extract zips on the server by hand: on Oct 23, 2026 that
+  left mitothrum.com's pages at mode 0660 and the site returned 403 everywhere.
+- `FTP inspect` (manual workflow) lists the server folder and can move files
+  into `_to_delete/` for the owner to delete in cPanel. It never deletes.
 - Every English page has a Spanish twin in /es/ with hreflang; change both.
 
 ## Automation already running
