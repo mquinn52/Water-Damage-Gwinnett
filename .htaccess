@@ -10,6 +10,7 @@ RewriteRule ^(.*)$ https://waterdamagegwinnett.com/$1 [R=301,L]
 # Always https
 RewriteCond %{HTTP_HOST} ^waterdamagegwinnett\.com$ [NC]
 RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
 RewriteRule ^(.*)$ https://waterdamagegwinnett.com/$1 [R=301,L]
 
 # /index.html and /es/index.html go to / and /es/ (matched on the original
