@@ -1,8 +1,22 @@
 RewriteEngine On
 
+# This file sits in public_html, which also contains the mitothrum.com
+# folder, so every rule below is limited to this site's own host names.
+
 # One canonical host: send www to the bare domain
 RewriteCond %{HTTP_HOST} ^www\.waterdamagegwinnett\.com$ [NC]
 RewriteRule ^(.*)$ https://waterdamagegwinnett.com/$1 [R=301,L]
+
+# Always https
+RewriteCond %{HTTP_HOST} ^waterdamagegwinnett\.com$ [NC]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://waterdamagegwinnett.com/$1 [R=301,L]
+
+# /index.html and /es/index.html go to / and /es/ (matched on the original
+# request so the server's own DirectoryIndex lookup never loops)
+RewriteCond %{HTTP_HOST} ^waterdamagegwinnett\.com$ [NC]
+RewriteCond %{THE_REQUEST} \s/+((?:[^/\s?]+/)*)index\.html[\s?] [NC]
+RewriteRule ^ https://waterdamagegwinnett.com/%1 [R=301,L]
 
 # Old backups, deploy archives and the hosting placeholder page are gone for good.
 # 410 tells Google to drop them; they should also be deleted from the server.
