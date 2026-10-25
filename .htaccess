@@ -28,6 +28,19 @@ RewriteRule ^(index-backup[^/]*\.html|home\.html|waterdamagegwinnett-deploy-[^/]
   Require all denied
 </FilesMatch>
 
+# Security headers: https only for a year, no framing by other sites, no MIME
+# sniffing, limited referrer details on outbound clicks, and no camera,
+# microphone, location or payment access for any page. Both sites send the
+# same set (this file's copy also reaches anything inside its folder).
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Content-Security-Policy "frame-ancestors 'self'"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+</IfModule>
+
 # Pages and feeds must be revalidated, so a deploy shows up immediately
 # instead of an old cached copy. Images keep normal caching.
 <IfModule mod_headers.c>

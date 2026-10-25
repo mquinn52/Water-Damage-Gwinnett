@@ -15,27 +15,21 @@ on:
       - "CLAUDE.md"
       - ".github/**"
   workflow_dispatch:
-    inputs:
-      protocol:
-        description: "ftps = encrypted (preferred). ftp = plain, for testing the connection only."
-        type: choice
-        options: [ftps, ftp]
-        default: ftps
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the site
-        uses: actions/checkout@v5
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0 (pinned)
 
       - name: Upload to the site folder
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5 (pinned: this step receives the FTP password)
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ inputs.protocol || 'ftps' }}
+          protocol: ftps   # always encrypted; plain FTP would send the password in the clear
           port: 21
           timeout: 60000
           server-dir: ./
