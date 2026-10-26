@@ -63,6 +63,12 @@
       "name": "Google: Optimizing for generative AI search",
       "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
       "why": "What matters for AI answers, including local results."
+    },
+    {
+      "id": "gwinnett-freeze-guidance",
+      "name": "Gwinnett County: Protect your pipes from the winter cold",
+      "url": "https://gwinnettcounty.com/home/stories/viewstory/-/story/Protectyourpipesfromthewintercold",
+      "why": "Source of the shutoff-valve locations and pipe-protection checklist on the freeze-prep pages (EN/ES)."
     }
   ]
 }
