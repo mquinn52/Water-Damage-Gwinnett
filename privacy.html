@@ -20,13 +20,21 @@
     gtag('js', new Date());
     gtag('config', 'G-YBEBBTKPSW');
   })();
-  // Tap-to-call tracking: GA4 event on every phone-link tap.
+  // Tap-to-call tracking. click_to_call = the routing number only (the
+  // revenue event); taps on the county's own line log as county_line_click so
+  // they never inflate call counts. Sent as a beacon so the hit survives the
+  // phone app taking over the screen.
   document.addEventListener('click', function (e) {
-    var a = e.target.closest('a[href^="tel:"]');
+    var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
     if (!a || typeof gtag !== 'function') return;
-    gtag('event', 'click_to_call', {
+    var num = a.getAttribute('href').replace('tel:', '');
+    var section = a.closest('section, footer, nav');
+    gtag('event', num === '+16788330791' ? 'click_to_call' : 'county_line_click', {
       page_path: location.pathname,
-      phone_number: a.getAttribute('href').replace('tel:', '')
+      phone_number: num,
+      link_location: section ? (section.className || section.tagName.toLowerCase()).split(' ')[0] : 'page',
+      page_language: document.documentElement.lang || 'en',
+      transport_type: 'beacon'
     });
   });
 </script>
