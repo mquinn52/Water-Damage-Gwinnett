@@ -8,6 +8,9 @@ is signed.
 ## Read first
 - `RULES.md` — compliance and growth rules, each tied to a source. Follow it;
   when a revenue idea conflicts with a rule, the rule wins.
+- `SOCIAL.md` — social playbook (Facebook, Instagram, Threads, Pinterest):
+  framing, disclosure, destinations, UTM tags, pillars, cadence. Read before
+  drafting any post or social-linked page.
 
 ## How changes go live
 - Push to `main` → `.github/workflows/deploy.yml` uploads to GoDaddy over FTPS

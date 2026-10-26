@@ -50,6 +50,6 @@ RewriteRule ^(index-backup[^/]*\.html|home\.html|waterdamagegwinnett-deploy-[^/]
 </IfModule>
 
 # Notes files in the repository are never public
-<FilesMatch "^(RULES|README|CLAUDE)\.md$">
+<FilesMatch "^(RULES|README|CLAUDE|SOCIAL)\.md$">
   Require all denied
 </FilesMatch>

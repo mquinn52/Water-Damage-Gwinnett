@@ -58,8 +58,9 @@ providers, honestly and lawfully. When a revenue idea conflicts with a rule, the
 - 8.4 hreflang: every page lists itself and its twin, every pair links both ways, codes en/es, absolute URLs, plus x-default. Google ignores one-way annotations. *Source: [Google: localized versions](https://developers.google.com/search/docs/specialty/international/localized-versions).*
 - 8.5 With no Business Profile allowed, earn local visibility through plain-language answers, Organization markup and mentions from genuine local partners (HOAs, libraries, community groups).
 - 8.6 TCPA status: the FCC's one-to-one consent rule was vacated by the 11th Circuit in January 2025, but prior express written consent still governs automated marketing calls and texts. Keep the site inbound-call only. *Source: [Morrison Foerster summary](https://mofo.com/resources/insights/250130-eleventh-circuit-vacates-fcc-s-tcpa-one-to-one-consent-rule).*
-- 8.7 Social posts (Instagram @waterdamagegwinnett): practical how-to content (shutoff valves, first steps), the same disclosure as the site, no fear-based urgency.
+- 8.7 Social posts (Facebook, Instagram, Threads, Pinterest): practical how-to content (shutoff valves, first steps), the same disclosure as the site, no fear-based urgency. Details in `SOCIAL.md`.
 
 ## Changelog
+- 2026-10-26: 8.7 widened to all four social profiles; social playbook moved to SOCIAL.md.
 - 2026-10-21: Added growth and trust rules from verified research.
 - 2026-10-20: First version, distilled from the October 2026 audit, the BrokerCalls agreement review and research.
