@@ -6,7 +6,7 @@ below and opens an issue, plus a pull request revising this file when an API key
 is set, whenever one of them changes. Rules marked **[auto]** are enforced by the
 daily site monitor (`.github/workflows/monitor.yml`).
 
-**Last reviewed:** October 21, 2026
+**Last reviewed:** October 29, 2026
 **Operator:** Guardian Bridge LLC (d/b/a Water Damage Gwinnett)
 **Goal:** earn per-call fees by connecting people with water damage to local
 providers, honestly and lawfully. When a revenue idea conflicts with a rule, the rule wins.
@@ -60,7 +60,40 @@ providers, honestly and lawfully. When a revenue idea conflicts with a rule, the
 - 8.6 TCPA status: the FCC's one-to-one consent rule was vacated by the 11th Circuit in January 2025, but prior express written consent still governs automated marketing calls and texts. Keep the site inbound-call only. *Source: [Morrison Foerster summary](https://mofo.com/resources/insights/250130-eleventh-circuit-vacates-fcc-s-tcpa-one-to-one-consent-rule).*
 - 8.7 Social posts (Facebook, Instagram, Threads, Pinterest): practical how-to content (shutoff valves, first steps), the same disclosure as the site, no fear-based urgency. Details in `SOCIAL.md`.
 
+## 9. Marketcall call network (added 2026-10-29; applies once Marketcall approves the account)
+Applied Oct 13, 2026, no decision yet. Marketcall's offer page always overrides
+its help center, so re-check the water-damage offer's rules on activation.
+*Sources: [Creative Submission Rules](https://help.marketcall.com/en/article/creative-submission-rules-1rj093s/), [Sanctions](https://help.marketcall.com/en/article/sanctions-i1y27p/), [Call statuses](https://help.marketcall.com/en/article/call-statuses-axmhko/), [Ringba integration](https://help.marketcall.com/en/article/integration-with-ringba-for-payouts-1687eos/), [Appeals](https://help.marketcall.com/en/article/how-to-appeal-refused-or-non-qualified-calls-1b24thb/), [Media Transaction Services Agreement](https://promo.marketcall.net/user_media_agreement).*
+
+### Before sending any Marketcall traffic
+- 9.1 Get written answers from the account manager on: (a) SEO/organic website traffic allowed on the water-damage offer; (b) Spanish-speaking callers accepted; (c) Ringba-to-SIP routing satisfies the "Marketcall-assigned number only" rule; (d) whether a site-wide content update needs full re-approval or only the pages tied to the campaign. No traffic until all four are answered in writing.
+- 9.2 Confirm the account is in Guardian Bridge LLC's name. Signing up auto-accepts the Media Transaction Services Agreement (one-way indemnity with Marketcall choosing counsel at our expense; liability capped at three months of fees; JAMS arbitration in Orange County under California law; terms change on posting). Send it to Hankins Legal with the other network agreements.
+- 9.3 Get every creative approved before it runs. For SEO traffic the creative is the website URL. Approval covers the exact version submitted, so any later edit to an approved page must be resubmitted before it goes live. First violation: calls refused and the program deactivated; second: account ban.
+
+### Page content for Marketcall-served pages
+- 9.4 Add Marketcall's required home-services footer disclaimer exactly as written on the Creative Submission Rules page (site name filled in). It sits alongside rule 1.1's fee disclosure, not in place of it. Copy it from the source when the offer activates rather than from memory.
+- 9.5 Homeowners only. No commercial, business, industrial, office, restaurant or multi-family service mentions; one line is enough for a rejection. Audit before submitting: Buford's "Commercial corridor runoff" and "commercial boom" lines, and "commercial dehumidifiers/air movers" wording on several pages, may need rephrasing (e.g. "professional-grade") if moderators object.
+- 9.6 Show only the Marketcall-assigned tracking number, formatted (888) 555-0142, with a visible click-to-call button. No form, quiz or "text us" in place of the number. This conflicts with Lead Smart's number being site-wide; resolve via 9.1(c) before going live, then update rule 2.1 and the monitor's `ALLOWED_PHONES`.
+- 9.7 No discounts, promotions, rebates, cash-back, tax credits or financing claims; no free on-site visits ("free phone quote" is the allowed form); no promises about insurance billing or claims. Documentation-for-your-claim advice is fine; "we bill your insurance" is not.
+- 9.8 Dollar amounts need a cited source (our rule 1.2/no-prices stance is stricter, keep it). Warranty mentions need "Warranty terms depend on the individual provider."
+- 9.9 Do not adopt Marketcall's suggested "Licensed & insured" replacement copy. It conflicts with rule 1.2: we hold no licenses and do no work.
+- 9.10 "24/7" and "Same-Day" stay banned (rule 1.2 and the brand rules). If ever used on a Marketcall page, their second availability disclaimer is mandatory.
+- 9.11 No impersonating real brands, no logos of others, no brand-name bidding, no fake testimonials, ratings, countdown timers, scarcity lines, fabricated screenshots or made-up badges (consistent with 1.3 and 8.3). Proofread: no unfilled `{city}`-style placeholders or broken characters.
+
+### Traffic and operations
+- 9.12 Allowed sources are only those on the offer page and approved for our campaign. Using a prohibited or unapproved source is an account ban on the first violation. Organic social posts are not an accepted source (Marketcall requires paid social ads, and paid social is out for this venture), so the social phone hold in SOCIAL.md stays in place for Marketcall.
+- 9.13 Never rebroke (buy calls from third parties and resell), never run more than one Marketcall account, never send incentivized or fraud calls: each is an account ban on the first violation. Routing our own organic callers through our Ringba account is not rebroking, but confirm in writing with the account manager since Ringba also routes to other networks.
+- 9.14 Keep traffic statistics (Search Console, GA4, Ringba) able to show where every call came from. Failing to provide them on request is an account ban.
+- 9.15 Do not contact the advertiser directly; all questions go through the Marketcall account manager.
+- 9.16 Ringba hookup: switch the Marketcall target from DID to SIP (`<marketcall number>@sip.marketcall.com`), set revenue by webhook/postback, and add Marketcall postbacks (hold and refused statuses) back to Ringba. Ringba remains the revenue source of truth.
+
+### Money
+- 9.17 Calls sit on HOLD (usually 7–10 days, set per offer) then auto-approve; approved calls can still be reversed after later quality, compliance or fraud review. Treat Marketcall revenue as provisional until past any dispute window.
+- 9.18 Appeal refused or non-unique calls within two days of the status change (the help center also cites 7 or 3 days in places; plan to the shortest).
+- 9.19 Payouts go through Tipalti (ACH, wire, PayPal or e-check) to the Guardian Bridge BlueVine account, 1–3 business days after a withdrawal request. Confirm the minimum and payout cycle on the dashboard.
+
 ## Changelog
+- 2026-10-29: Added section 9 (Marketcall rules, from its help center and signup agreement).
 - 2026-10-26: 8.7 widened to all four social profiles; social playbook moved to SOCIAL.md.
 - 2026-10-21: Added growth and trust rules from verified research.
 - 2026-10-20: First version, distilled from the October 2026 audit, the BrokerCalls agreement review and research.
