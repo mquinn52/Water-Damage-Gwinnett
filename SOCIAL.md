@@ -31,7 +31,9 @@ threads.com/@waterdamagegwinnett · pinterest.com/waterdamagegwinnett
 - **Open question before putting the number in posts or turning on Facebook's
   "Call" button:** confirm the current call network allows social media as a
   traffic source (RULES 2.4–2.5 require approved sources). Until confirmed,
-  posts and buttons link to the site.
+  posts and buttons link to the site. Marketcall does not accept organic
+  social posts as a traffic source (RULES 9.12), so for Marketcall the answer
+  is already no.
 - Spanish posts link to the /es/ twin of the page.
 - Tag every link with UTM parameters so GA4 shows what social brings:
   `?utm_source=<platform>&utm_medium=social&utm_campaign=<topic>`
