@@ -14,6 +14,7 @@ Configured by environment variables:
   ALLOWED_PHONES     optional; comma-separated tel: numbers allowed on the site
   SKIP_FILES         optional; comma-separated files exempt from page rules
 """
+import time
 import glob, os, re, sys, urllib.request, xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 
@@ -66,13 +67,39 @@ for f in pages:
             problems.append(f"`{f}`: unexpected phone number {href[4:]}")
 
 # ---------- 2. Live site ----------
-def fetch(url):
-    req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.status, r.read().decode("utf-8", "replace")
+def fetch(url, ok=None, tries=3, wait=20):
+    """Fetch a URL, retrying on errors or on a response that fails `ok`.
+
+    The shared host's bot protection sometimes answers automated requests
+    with a stand-in HTML page (seen Oct 29, 2026: the sitemap came back as
+    HTML right after a deploy). One bad response is not a site problem, so
+    try up to three times, 20 seconds apart, before reporting it.
+    """
+    last = None
+    for attempt in range(tries):
+        if attempt:
+            time.sleep(wait)
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            with urllib.request.urlopen(req, timeout=30) as r:
+                result = (r.status, r.read().decode("utf-8", "replace"))
+            if ok is None or ok(result[1]):
+                return result
+            last = result
+        except Exception as e:
+            last = e
+    if isinstance(last, Exception):
+        raise last
+    return last
+
+def is_xml(body):
+    try:
+        ET.fromstring(body); return True
+    except ET.ParseError:
+        return False
 
 try:
-    _, sm = fetch(f"{SITE}/sitemap.xml?monitor=1")
+    _, sm = fetch(f"{SITE}/sitemap.xml?monitor=1", ok=is_xml)
     urls = [e.text.strip() for e in ET.fromstring(sm).iter() if e.tag.endswith("loc")]
 except Exception as e:
     urls = []; problems.append(f"Live sitemap could not be read: {e}")
@@ -85,10 +112,13 @@ def local_file_for(url):
 stale = []
 for url in urls:
     try:
-        status, html = fetch(url + ("&" if "?" in url else "?") + "monitor=1")
+        time.sleep(1.5)  # pace requests so the host's bot protection doesn't kick in
+        f = local_file_for(url)
+        want = local_titles.get(f)
+        status, html = fetch(url + ("&" if "?" in url else "?") + "monitor=1",
+                             ok=(lambda b, w=want: w is None or parse(b).title == w))
         if status != 200:
             problems.append(f"{url} returned HTTP {status}"); continue
-        f = local_file_for(url)
         if f in local_titles and parse(html).title != local_titles[f]:
             stale.append(url)
     except Exception as e:
