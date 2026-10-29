@@ -36,7 +36,12 @@ RewriteRule ^(index-backup[^/]*\.html|home\.html|waterdamagegwinnett-deploy-[^/]
   Header always set Strict-Transport-Security "max-age=31536000"
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
-  Header always set Content-Security-Policy "frame-ancestors 'self'"
+  # Full Content Security Policy (tested Oct 29, 2026 on every page with zero
+  # violations): scripts, styles, fonts and analytics only from this site,
+  # Google Fonts and Google Analytics; no plugins, no framing, no form posts
+  # to other sites. Add a domain here before embedding anything new.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
 </IfModule>
@@ -53,3 +58,9 @@ RewriteRule ^(index-backup[^/]*\.html|home\.html|waterdamagegwinnett-deploy-[^/]
 <FilesMatch "^(RULES|README|CLAUDE|SOCIAL)\.md$">
   Require all denied
 </FilesMatch>
+
+# The deploy tool's file list (names and hashes of every uploaded file) is
+# for the FTP sync only, never for the web.
+<Files ".ftp-deploy-sync-state.json">
+  Require all denied
+</Files>
