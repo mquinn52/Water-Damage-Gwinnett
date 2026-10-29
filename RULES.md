@@ -60,9 +60,10 @@ providers, honestly and lawfully. When a revenue idea conflicts with a rule, the
 - 8.6 TCPA status: the FCC's one-to-one consent rule was vacated by the 11th Circuit in January 2025, but prior express written consent still governs automated marketing calls and texts. Keep the site inbound-call only. *Source: [Morrison Foerster summary](https://mofo.com/resources/insights/250130-eleventh-circuit-vacates-fcc-s-tcpa-one-to-one-consent-rule).*
 - 8.7 Social posts (Facebook, Instagram, Threads, Pinterest): practical how-to content (shutoff valves, first steps), the same disclosure as the site, no fear-based urgency. Details in `SOCIAL.md`.
 
-## 9. Marketcall call network (added 2026-10-29; applies once Marketcall approves the account)
-Applied Oct 13, 2026, no decision yet. Marketcall's offer page always overrides
-its help center, so re-check the water-damage offer's rules on activation.
+## 9. Marketcall call network (added 2026-10-29)
+Account approved Oct 29, 2026 (applied Oct 13). No campaign or traffic yet: 9.1
+gates both. Marketcall's offer page always overrides its help center, so re-check
+the chosen offer's rules before activating it.
 *Sources: [Creative Submission Rules](https://help.marketcall.com/en/article/creative-submission-rules-1rj093s/), [Sanctions](https://help.marketcall.com/en/article/sanctions-i1y27p/), [Call statuses](https://help.marketcall.com/en/article/call-statuses-axmhko/), [Ringba integration](https://help.marketcall.com/en/article/integration-with-ringba-for-payouts-1687eos/), [Appeals](https://help.marketcall.com/en/article/how-to-appeal-refused-or-non-qualified-calls-1b24thb/), [Media Transaction Services Agreement](https://promo.marketcall.net/user_media_agreement).*
 
 ### Before sending any Marketcall traffic
@@ -93,6 +94,7 @@ its help center, so re-check the water-damage offer's rules on activation.
 - 9.19 Payouts go through Tipalti (ACH, wire, PayPal or e-check) to the Guardian Bridge BlueVine account, 1–3 business days after a withdrawal request. Confirm the minimum and payout cycle on the dashboard.
 
 ## Changelog
+- 2026-10-29: Section 9 header updated: Marketcall account approved.
 - 2026-10-29: Added section 9 (Marketcall rules, from its help center and signup agreement).
 - 2026-10-26: 8.7 widened to all four social profiles; social playbook moved to SOCIAL.md.
 - 2026-10-21: Added growth and trust rules from verified research.
