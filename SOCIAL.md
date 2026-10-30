@@ -54,6 +54,30 @@ threads.com/@waterdamagegwinnett · pinterest.com/waterdamagegwinnett
    damage in Gwinnett County, here's how to reach a local provider" + link + the
    disclosure line.
 
+## Accessibility (added Oct 30, 2026)
+- **Alt text on every image post and pin**, written by us, never the
+  platform's automatic guess ("May be an image of body of water and text").
+  Say what the image shows and include every word printed on it; about two
+  sentences (~125 characters where possible). Don't paste the caption in as
+  alt text. Spanish posts get Spanish alt text.
+- **Videos:** on-screen text isn't read aloud, so the caption carries the
+  video's key point in plain words. Any video with speech gets reviewed
+  captions (Meta's caption tools, edited before posting).
+- **Captions in sentence case.** No all-caps sentences in the caption text.
+  A short all-caps headline on the graphic itself is fine, because the alt
+  text carries its words.
+- **Hashtags in capitalised words** (#WaterDamage, #GwinnettCounty), placed
+  at the end of the caption, so screen readers can split the words. The local
+  hashtag set stays, capitalised.
+- **Emoji:** sparingly, never as bullets, never as the first character of
+  the caption, never repeated in a row.
+- These sit alongside the rules above (fee disclosure on CTA posts, no
+  urgency, EPA wording for mold timing, phone hold); none of them relaxes
+  those.
+- Sources: [Mass.gov social media accessibility](https://accessibility.mass.gov/training/social),
+  [CUNY: hashtags](https://guides.cuny.edu/accessibility/hashtags),
+  [University of Houston: social media accessibility](https://www.uh.edu/marcom/guidelines-policies/social-media/accessibility/).
+
 ## Per platform
 - **Pinterest (highest priority — search traffic that lasts):** 2:3 pins
   (1000×1500), keyword-rich title and description with the town name, linking
