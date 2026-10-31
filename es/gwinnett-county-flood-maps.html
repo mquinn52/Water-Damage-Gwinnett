@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script>
+  // Google Analytics 4 loads only if the visitor hasn't opted out
+  // (Global Privacy Control signal or the opt-out on privacy.html).
+  (function () {
+    var optedOut = false;
+    try { optedOut = localStorage.getItem('wdg_analytics_optout') === '1'; } catch (e) {}
+    if (navigator.globalPrivacyControl === true || optedOut) {
+      window.gtag = function () {};
+      return;
+    }
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-YBEBBTKPSW');
+  })();
+
+  // Tap-to-call tracking. click_to_call = the routing number only (the
+  // revenue event); taps on the county's own line log as county_line_click so
+  // they never inflate call counts. Sent as a beacon so the hit survives the
+  // phone app taking over the screen.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+    if (!a || typeof gtag !== 'function') return;
+    var num = a.getAttribute('href').replace('tel:', '');
+    var section = a.closest('section, footer, nav');
+    gtag('event', num === '+16788330791' ? 'click_to_call' : 'county_line_click', {
+      page_path: location.pathname,
+      phone_number: num,
+      link_location: section ? (section.className || section.tagName.toLowerCase()).split(' ')[0] : 'page',
+      page_language: document.documentElement.lang || 'en',
+      transport_type: 'beacon'
+    });
+  });
+</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <title>Mapas de inundación del condado de Gwinnett: guía oficial | Water Damage Gwinnett</title>
+  <meta name="description" content="Cómo consultar los mapas oficiales de inundación de una propiedad en el condado de Gwinnett: el portal del condado, el Centro de Servicio de Mapas de FEMA, el programa de mapas de Georgia, términos clave y lo que un mapa no puede decirle.">
+  <link rel="canonical" href="https://waterdamagegwinnett.com/es/gwinnett-county-flood-maps.html">
+  <link rel="alternate" hreflang="en" href="https://waterdamagegwinnett.com/gwinnett-county-flood-maps.html">
+  <link rel="alternate" hreflang="es" href="https://waterdamagegwinnett.com/es/gwinnett-county-flood-maps.html">
+  <link rel="alternate" hreflang="x-default" href="https://waterdamagegwinnett.com/gwinnett-county-flood-maps.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Water Damage Gwinnett">
+  <meta property="og:title" content="Mapas de inundación del condado de Gwinnett: guía oficial | Water Damage Gwinnett">
+  <meta property="og:description" content="Cómo consultar los mapas oficiales de inundación de una propiedad en el condado de Gwinnett: el portal del condado, el Centro de Servicio de Mapas de FEMA, el programa de mapas de Georgia, términos clave y lo que un mapa no puede decirle.">
+  <meta property="og:url" content="https://waterdamagegwinnett.com/es/gwinnett-county-flood-maps.html">
+  <meta property="og:image" content="https://waterdamagegwinnett.com/images/flooded-basement.webp">
+  <meta property="og:image:alt" content="Agua estancada en un sótano inundado">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mapas de inundación del condado de Gwinnett: guía oficial | Water Damage Gwinnett">
+  <meta name="twitter:description" content="Cómo consultar los mapas oficiales de inundación de una propiedad en el condado de Gwinnett: el portal del condado, el Centro de Servicio de Mapas de FEMA, el programa de mapas de Georgia, términos clave y lo que un mapa no puede decirle.">
+  <meta name="twitter:image" content="https://waterdamagegwinnett.com/images/flooded-basement.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Franklin:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      color-scheme:light dark;
+      --paper:#f4f7f6;--surface:#ffffff;--surface-2:#e8efed;--ink:#10221f;--muted:#536761;
+      --line:#cbd7d3;--deep:#083e38;--deep-2:#052c29;--aqua:#0a776d;--lime:#d8f15b;--warning:#e05a32;
+      --shadow:0 18px 50px rgba(12,44,40,.14);--radius:20px;
+    }
+    @media(prefers-color-scheme:dark){:root{--paper:#08110f;--surface:#101c19;--surface-2:#162622;--ink:#edf7f4;--muted:#aebfba;--line:#2b403b;--deep:#0d4e47;--deep-2:#062e2a;--aqua:#2cb7a8;--lime:#d9ef6d;--warning:#ff8a66;--shadow:0 18px 50px rgba(0,0,0,.34)}}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.55}.shell{max-width:1180px;margin:auto;padding:0 24px}.switcher{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.switcher .inner{min-height:66px;display:flex;align-items:center;justify-content:center;gap:18px}.tabs{display:flex;gap:6px;padding:5px;background:var(--surface-2);border-radius:999px}.tab{border:0;background:transparent;color:var(--muted);font:700 14px "DM Sans";padding:9px 15px;border-radius:999px;cursor:pointer}.tab.active{background:var(--surface);color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.08)}.status{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}.status-dot{width:8px;height:8px;border-radius:50%;background:var(--warning)}
+    .view{display:none}.view.active{display:block}.hero{min-height:680px;display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;background:var(--deep-2);color:#fff}.hero-copy{padding:76px max(24px,calc((100vw - 1180px)/2)) 72px max(24px,calc((100vw - 1180px)/2));padding-right:64px;display:flex;flex-direction:column;justify-content:center}.eyebrow{font-weight:700;color:var(--lime);letter-spacing:.08em;text-transform:uppercase;font-size:13px}.hero h1{font-family:"Libre Franklin",sans-serif;font-size:clamp(42px,6vw,78px);line-height:.98;letter-spacing:-.055em;margin:17px 0 22px;max-width:780px}.hero p{font-size:19px;max-width:650px;color:#d8e7e4;margin:0 0 30px}.call-panel{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.disabled-cta{appearance:none;border:0;background:var(--lime);color:#14200b;font-weight:800;font-size:17px;padding:16px 22px;border-radius:8px;cursor:not-allowed}.line-note{font-size:13px;color:#c6d7d2;max-width:250px}.hero-image{position:relative;overflow:hidden;min-height:520px}.hero-image img{width:100%;height:100%;object-fit:cover}.hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--deep-2),transparent 25%),linear-gradient(0deg,rgba(0,20,18,.25),transparent 40%)}.proof{background:var(--lime);color:#16210c}.proof .shell{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;padding-top:0;padding-bottom:0}.proof-item{padding:20px 22px;border-right:1px solid rgba(0,0,0,.18);font-weight:700}.proof-item:last-child{border-right:0}.proof-item small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;opacity:.68;margin-bottom:3px}.section{padding:88px 0}.section h2,.campaign h2{font-family:"Libre Franklin",sans-serif;font-size:clamp(34px,4.8vw,58px);letter-spacing:-.045em;line-height:1.05;margin:0}.lead{font-size:18px;color:var(--muted);max-width:720px;margin:18px 0 0}.service-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:38px}.service{background:var(--surface);border-top:4px solid var(--aqua);padding:25px 24px 28px;box-shadow:0 7px 24px rgba(10,40,35,.07)}.service b{font:700 20px "Libre Franklin"}.service p{color:var(--muted);margin:10px 0 0}.service .num{display:block;font:800 36px "Libre Franklin";color:var(--aqua);margin-bottom:25px}.split{display:grid;grid-template-columns:.9fr 1.1fr;background:var(--surface);margin-top:70px}.split img{width:100%;height:100%;min-height:460px;object-fit:cover}.split-copy{padding:54px}.split-copy ol{padding:0;list-style:none;counter-reset:step;margin:30px 0 0}.split-copy li{counter-increment:step;display:grid;grid-template-columns:38px 1fr;gap:14px;padding:15px 0;border-top:1px solid var(--line)}.split-copy li:before{content:counter(step);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--deep);color:#fff;font-weight:800}.split-copy strong{display:block;margin-bottom:3px}.split-copy span{color:var(--muted)}.dark-band{background:var(--deep-2);color:#fff;padding:72px 0}.dark-band .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.dark-band h2{font:800 clamp(34px,4.6vw,56px) "Libre Franklin";line-height:1.05;letter-spacing:-.04em;margin:0}.checklist{margin:0;padding:0;list-style:none}.checklist li{padding:15px 0 15px 34px;border-bottom:1px solid rgba(255,255,255,.17);position:relative;color:#dfeae7}.checklist li:before{content:"✓";position:absolute;left:0;color:var(--lime);font-weight:800}.fine{font-size:13px;color:var(--muted)}.sources{padding:40px 0 100px}.sources details{border-top:1px solid var(--line);padding:18px 0}.sources summary{font-weight:700;cursor:pointer}
+.faq-list{margin-top:34px;max-width:880px}
+.faq-list details{border-top:1px solid var(--line);padding:20px 0}
+.faq-list details:last-child{border-bottom:1px solid var(--line)}
+.faq-list summary{font-weight:700;cursor:pointer;font-size:18px}
+.faq-answer{margin:12px 0 0;color:var(--muted);font-size:16px;line-height:1.65;max-width:780px}.sources a{color:var(--aqua);overflow-wrap:anywhere}
+    .campaign{padding:64px 0 100px}.campaign-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:36px}.campaign-head .lead{max-width:690px}.download{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 14px "DM Sans";padding:12px 16px;border-radius:8px;cursor:pointer}.ops{display:grid;grid-template-columns:repeat(4,1fr);background:var(--deep-2);color:white;margin-bottom:38px}.ops div{padding:20px;border-right:1px solid rgba(255,255,255,.15)}.ops div:last-child{border:0}.ops small{display:block;color:#a9c1bb}.ads{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.ad-card{background:var(--surface);box-shadow:var(--shadow);overflow:hidden}.creative{aspect-ratio:4/5;position:relative;background:#1b413b;overflow:hidden}.creative img{width:100%;height:100%;object-fit:cover}.creative:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,20,18,.05) 25%,rgba(2,20,18,.92) 100%)}.creative-domain{position:absolute;z-index:2;top:20px;left:24px;color:#fff;font-size:12px;font-weight:800;letter-spacing:.04em;text-shadow:0 1px 5px rgba(0,0,0,.5)}.creative-copy{position:absolute;z-index:2;left:24px;right:24px;bottom:24px;color:white}.creative-copy .ad-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--lime);font-weight:800}.creative-copy h3{font:800 30px/1.02 "Libre Franklin";letter-spacing:-.03em;margin:8px 0 10px}.creative-copy p{font-size:14px;margin:0;color:#e4efec}.ad-body{padding:22px}.ad-body dl{margin:0}.ad-body dt{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:800;margin-top:16px}.ad-body dt:first-child{margin-top:0}.ad-body dd{margin:5px 0 0}.copy-btn{margin-top:20px;width:100%;border:0;background:var(--deep);color:white;padding:12px;border-radius:7px;font-weight:800;cursor:pointer}.copy-btn.done{background:var(--aqua)}.launch-note{margin-top:34px;padding:26px 28px;background:var(--surface-2);display:grid;grid-template-columns:1fr 1fr;gap:32px}.launch-note h3{margin:0 0 8px;font:700 22px "Libre Franklin"}.launch-note p,.launch-note ul{margin:0;color:var(--muted)}.launch-note ul{padding-left:20px}.site-footer{background:var(--surface);border-top:1px solid var(--line)}.site-footer .shell{min-height:108px;display:flex;align-items:center;justify-content:space-between;gap:24px}.footer-brand strong{display:block;font:700 18px "Libre Franklin"}.footer-brand span,.footer-note{color:var(--muted);font-size:13px}.footer-note{max-width:520px;text-align:right}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:.2s;z-index:90}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:820px){.shell{padding:0 18px}.switcher .inner{min-height:60px}.status{display:none}.tab{padding:8px 12px}.hero{grid-template-columns:1fr;min-height:0}.hero-copy{padding:52px 22px 46px}.hero h1{font-size:46px}.hero-image{height:240px;min-height:0;order:0}.hero-image:after{background:linear-gradient(0deg,var(--deep-2),transparent 45%)}.proof .shell{grid-template-columns:1fr}.proof-item{border-right:0;border-bottom:1px solid rgba(0,0,0,.18);padding:14px 4px}.proof-item:last-child{border:0}.section{padding:60px 0}.service-grid,.ads{grid-template-columns:1fr}.split{grid-template-columns:1fr;margin-top:48px}.split img{min-height:280px;max-height:340px}.split-copy{padding:30px 24px}.dark-band .grid{grid-template-columns:1fr;gap:30px}.campaign{padding-top:42px}.campaign-head{grid-template-columns:1fr;gap:18px}.campaign-head .download{justify-self:start}.ops{grid-template-columns:1fr 1fr}.ops div:nth-child(2){border-right:0}.ops div:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.15)}.launch-note{grid-template-columns:1fr}.creative-copy h3{font-size:34px}.site-footer .shell{min-height:0;padding-top:28px;padding-bottom:28px;display:block}.footer-note{max-width:none;text-align:left;margin:12px 0 0}}
+    @media(max-width:430px){.shell{padding:0 16px}.tabs{width:100%}.tab{flex:1}.hero h1{font-size:40px}.hero p{font-size:17px}.call-panel{align-items:flex-start}.disabled-cta{width:100%}.ops{grid-template-columns:1fr}.ops div{border-right:0;border-bottom:1px solid rgba(255,255,255,.15)!important}.ops div:last-child{border:0!important}.creative-copy h3{font-size:30px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
+  
+    @media(max-width:768px){
+      /* MOBILE OPTIMIZATION (added Oct 2026) — all rules in this block apply to small screens only; desktop rendering is untouched */
+      html{-webkit-text-size-adjust:100%}
+      body{-webkit-tap-highlight-color:rgba(12,128,117,.28);overflow-wrap:break-word}
+      h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
+      :focus-visible{outline:2px solid var(--aqua);outline-offset:3px;border-radius:4px}
+      img,svg,video{max-width:100%;height:auto}
+      /* Fluid headlines scale down gracefully instead of jumping at fixed breakpoints */
+      .hero h1{font-size:clamp(36px,10vw,46px)}
+      .section h2,.dark-band h2{font-size:clamp(30px,8vw,40px)}
+      /* Header: tabs + EN|ES toggle share the row comfortably, wrap instead of overlapping on narrow screens */
+      .switcher .inner{flex-wrap:wrap;row-gap:8px}
+      .tabs{flex:1 1 auto;min-width:0}
+      .tab{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+      .lang-toggle a{display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center}
+      /* Money element: thumb-friendly call button, prominent once enabled (stays disabled for now) */
+      .call-panel{gap:14px}
+      .disabled-cta{min-height:56px;display:inline-flex;align-items:center;justify-content:center;font-size:18px}
+      /* FAQ + sources accordions: full-row 44px tap targets, no hover required */
+      .faq-list summary,.sources summary{min-height:44px;display:flex;align-items:center;gap:8px;padding:6px 0}
+      .faq-list details{padding:16px 0}
+      /* Vertical rhythm: generous but not wasteful */
+      .section{padding:52px 0}
+      .service-grid{gap:14px;margin-top:28px}
+      .service{padding:22px 20px 24px}
+    }
+    @media(max-width:480px){
+      .hero h1{font-size:clamp(32px,9.5vw,40px);letter-spacing:-.04em}
+      .hero-copy{padding:44px 20px 40px}
+      .hero p{font-size:17px}
+      .section{padding:44px 0}
+      .section h2,.dark-band h2{font-size:clamp(28px,8.5vw,34px)}
+      .switcher .inner{gap:10px}
+      .call-panel{flex-direction:column;align-items:stretch}
+      .disabled-cta{width:100%}
+      .line-note{max-width:none}
+      .split-copy{padding:26px 20px}
+      .split-copy li{padding:13px 0}
+      .dark-band{padding:56px 0}
+      .eyebrow{font-size:12px}
+    }
+  
+
+/* mobile-fixes 2026-10-21: no sideways scroll, readable text, 24px+ tap targets */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img{max-width:100%}
+@media(max-width:820px){.split>*{min-width:0}.split img{height:auto;width:100%}.split-copy h2{overflow-wrap:anywhere}footer a,.site-footer a,figcaption a,.credit a{display:inline-block;padding:6px 2px}.footer-note,footer-brand span,figcaption,.credit,.fine{font-size:14px}figcaption a,.fine a{display:inline-block;padding:6px 2px}}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:1000;padding:10px 16px;border-radius:8px;background:#052c29;color:#fff;font-weight:700;text-decoration:none}.skip-link:focus{top:12px}main:focus{outline:none}
+  .mobile-call-bar{display:none}@media (max-width:720px){.mobile-call-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:80;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#052c29;border-top:1px solid rgba(255,255,255,.2)}.mobile-call-bar a{display:block;text-align:center;color:#fff;font-weight:800;font-size:17px;text-decoration:none;padding:12px;border-radius:8px;background:#0a776d}.mobile-call-bar a:focus-visible{outline:3px solid #fff;outline-offset:2px}body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}}
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://waterdamagegwinnett.com/#organization",
+      "name": "Water Damage Gwinnett",
+      "url": "https://waterdamagegwinnett.com/",
+      "description": "Referral and call-routing service connecting homeowners in Gwinnett County, GA with independent local water damage restoration contractors.",
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Gwinnett County, GA"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Cómo consultar los mapas oficiales de inundación de una propiedad en el condado de Gwinnett",
+      "inLanguage": "es",
+      "datePublished": "2026-10-31",
+      "dateModified": "2026-10-31",
+      "author": {
+        "@id": "https://waterdamagegwinnett.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://waterdamagegwinnett.com/#organization"
+      },
+      "mainEntityOfPage": "https://waterdamagegwinnett.com/es/gwinnett-county-flood-maps.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://waterdamagegwinnett.com/es/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mapas de inundación",
+          "item": "https://waterdamagegwinnett.com/es/gwinnett-county-flood-maps.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cómo encuentro los mapas de inundación de mi propiedad en el condado de Gwinnett?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Empiece por la página de información sobre inundaciones del condado de Gwinnett y el portal de información sobre inundaciones de Gwinnett; luego busque la dirección en el Centro de Servicio de Mapas de Inundación de FEMA, que contiene los mapas oficiales que se usan para el seguro contra inundaciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde puedo consultar una zona de inundación de FEMA por dirección?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En el Centro de Servicio de Mapas de Inundación de FEMA, en msc.fema.gov. Escriba la dirección, abra el mapa vigente de esa ubicación y anote el número de panel y la fecha de vigencia. Puede guardar o imprimir un FIRMette para sus registros."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué significa una inundación con probabilidad anual del 1%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es una inundación con una probabilidad de 1 en 100 de ocurrir en cualquier año, a menudo llamada inundación de 100 años. El nombre engaña: puede ocurrir en años consecutivos. Las zonas especiales de peligro de inundación se mapean con esta norma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Si una propiedad está fuera de una zona de inundación mapeada, ¿significa que no puede inundarse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Los mapas muestran peligros de inundación mapeados de ríos y arroyos. Las lluvias fuertes, el mal drenaje y las fallas de plomería pueden meter agua en cualquier casa. El condado de Gwinnett también señala que el seguro de vivienda estándar no cubre daños por inundación; esa cobertura es una póliza aparte."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde puedo encontrar un certificado de elevación?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El condado de Gwinnett indica que los certificados de elevación están disponibles para algunas propiedades residenciales, no para todas, a través de su Departamento de Planificación y Desarrollo. Consulte la página de información sobre inundaciones del condado para saber cómo solicitarlo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué hago si creo que un mapa de inundación de FEMA es incorrecto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FEMA tiene un proceso para cambiar mapas. Una carta de enmienda del mapa (LOMA) puede excluir una propiedad o estructura de la zona especial de peligro de inundación cuando se demuestra que está por encima de la elevación de inundación base; una carta de revisión del mapa (LOMR) cambia el mapa con base en datos nuevos. La página de información sobre inundaciones del condado de Gwinnett explica los procedimientos locales de cambios de mapas y de construcción en planicies de inundación."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://waterdamagegwinnett.com/#organization","name":"Water Damage Gwinnett","url":"https://waterdamagegwinnett.com/","logo":"https://waterdamagegwinnett.com/images/apple-touch-icon.png","email":"contact@waterdamagegwinnett.com","telephone":"+1-678-833-0791","contactPoint":{"@type":"ContactPoint","telephone":"+1-678-833-0791","contactType":"customer service","areaServed":"Gwinnett County, GA","availableLanguage":["English","Spanish"]},"sameAs":["https://www.instagram.com/waterdamagegwinnett/","https://www.threads.com/@waterdamagegwinnett","https://www.pinterest.com/waterdamagegwinnett/","https://www.facebook.com/waterdamagegwinnett"]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <nav class="switcher" aria-label="Idioma del sitio">
+    <div class="shell inner">
+      <div class="lang-toggle" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0"><a href="../gwinnett-county-flood-maps.html" hreflang="en" style="color:var(--muted);text-decoration:none">EN</a><span aria-hidden="true" style="color:var(--line)">|</span><span aria-current="true" style="color:var(--ink)">ES</span></div>
+      </div>
+  </nav>
+
+  <main id="main" tabindex="-1">
+    <div class="view active" id="site-view">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Condado de Gwinnett · Mapas de inundación</div>
+          <h1>Cómo consultar los mapas oficiales de inundación de una propiedad en el condado de Gwinnett</h1>
+          <p>Tres recursos oficiales muestran si una dirección está en una zona de peligro de inundación mapeada. Aquí explicamos cómo usarlos, qué significan los términos y lo que un mapa no puede decirle. Última revisión: 31 de octubre de 2026.</p>
+        </div>
+        <div class="hero-image"><img src="/images/flooded-basement.webp" width="1408" height="939" alt="Agua estancada en un sótano inundado"></div>
+      </section>
+
+      <section class="proof" aria-label="Prioridades">
+        <div class="shell">
+          <div class="proof-item"><small>Primero</small>Consulte el portal del condado</div>
+          <div class="proof-item"><small>Luego</small>Busque el mapa de FEMA</div>
+          <div class="proof-item"><small>Recuerde</small>Un mapa no es una garantía</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="eyebrow" style="color:var(--aqua)">Para empezar</div>
+          <h2>Qué son los mapas de inundación en el condado de Gwinnett</h2>
+          <p class="lead">Los mapas de inundación muestran dónde se espera que haya inundaciones de ríos y arroyos según una norma definida, para que propietarios, compradores y aseguradoras vean las zonas de peligro mapeadas. Al 31 de octubre de 2026, la página de información sobre inundaciones del condado de Gwinnett indica que el condado tiene aproximadamente 24,000 acres de planicie de inundación (<a href="https://www.gwinnettcounty.com/government/departments/planning-development/building-services/flood-information" target="_blank" rel="noopener" style="color:var(--aqua)">información sobre inundaciones del condado de Gwinnett, en inglés</a>).</p>
+          <p class="lead">Esa cifra del condado es contexto, no un veredicto sobre una casa en particular. Que una propiedad esté o no en una zona de peligro de inundación mapeada depende de su ubicación exacta en los mapas oficiales que se indican abajo.</p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="shell">
+          <div class="eyebrow" style="color:var(--aqua)">Recurso 1</div>
+          <h2>Empiece por el portal de información sobre inundaciones de Gwinnett</h2>
+          <p class="lead">El condado de Gwinnett remite a los residentes a su <a href="https://www.gwinnettfloodplain.com/" target="_blank" rel="noopener" style="color:var(--aqua)">portal de información sobre inundaciones de Gwinnett (en inglés)</a> para consultar información local sobre planicies de inundación. Empiece ahí para ver los datos del condado sobre una zona y luego confirme con FEMA el mapa oficial de una dirección específica.</p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="shell">
+          <div class="eyebrow" style="color:var(--aqua)">Recurso 2</div>
+          <h2>Busque el mapa de inundación de FEMA de una propiedad</h2>
+          <p class="lead">El <a href="https://msc.fema.gov/portal/home" target="_blank" rel="noopener" style="color:var(--aqua)">Centro de Servicio de Mapas de Inundación de FEMA (en inglés)</a> contiene los mapas oficiales que usa el Programa Nacional de Seguro contra Inundaciones, y el condado lo enlaza directamente. Para usarlo:</p>
+<ol style="max-width:780px;padding-left:22px;margin:14px 0 0;color:var(--muted);font-size:18px"><li style="margin:0 0 8px">Abra el Centro de Servicio de Mapas y escriba la dirección de la propiedad en el buscador.</li><li style="margin:0 0 8px">Abra el mapa vigente que aparece para esa dirección.</li><li style="margin:0 0 8px">Anote el número de panel del mapa y su fecha de vigencia.</li><li style="margin:0 0 8px">Revise si aparecen cambios o enmiendas al mapa para esa zona.</li><li>Guarde o imprima un FIRMette, un extracto imprimible del mapa oficial, si lo necesita para sus registros.</li></ol>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="shell">
+          <div class="eyebrow" style="color:var(--aqua)">Recurso 3</div>
+          <h2>El programa de mapas de inundación de Georgia</h2>
+          <p class="lead">El condado también enlaza el programa continuo de mapeo, evaluación y planificación de inundaciones de Georgia en <a href="https://www.georgiadfirm.com/" target="_blank" rel="noopener" style="color:var(--aqua)">Georgia DFIRM (en inglés)</a>. Úselo para información de mapas estatales; para el mapa oficial que se usa en el seguro contra inundaciones, consulte el Centro de Servicio de Mapas de FEMA.</p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="shell">
+          <div class="eyebrow" style="color:var(--aqua)">Términos en lenguaje sencillo</div>
+          <h2>Términos de los mapas de inundación, explicados</h2>
+          <div style="max-width:880px;margin-top:22px;overflow-x:auto">
+            <table style="border-collapse:collapse;width:100%;font-size:16px">
+              <tr><th scope="row" style="text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-top:1px solid var(--line);white-space:nowrap">FIRM</th><td style="padding:12px 0;border-top:1px solid var(--line);color:var(--muted)">Mapa de tarifas del seguro contra inundaciones: el mapa oficial de FEMA con las zonas de peligro de inundación de una comunidad.</td></tr>
+              <tr><th scope="row" style="text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-top:1px solid var(--line);white-space:nowrap">SFHA</th><td style="padding:12px 0;border-top:1px solid var(--line);color:var(--muted)">Zona especial de peligro de inundación: el área que se espera que se inunde en una inundación con probabilidad anual del 1%.</td></tr>
+              <tr><th scope="row" style="text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-top:1px solid var(--line);white-space:nowrap">Inundación con probabilidad anual del 1%</th><td style="padding:12px 0;border-top:1px solid var(--line);color:var(--muted)">Una inundación con una probabilidad de 1 en 100 de ocurrir en cualquier año, a menudo llamada &ldquo;inundación de 100 años&rdquo;. Puede ocurrir en años consecutivos.</td></tr>
+              <tr><th scope="row" style="text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-top:1px solid var(--line);white-space:nowrap">BFE</th><td style="padding:12px 0;border-top:1px solid var(--line);color:var(--muted)">Elevación de inundación base: la altura que se espera que alcance el agua en una inundación con probabilidad anual del 1%.</td></tr>
+              <tr><th scope="row" style="text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-top:1px solid var(--line);white-space:nowrap">LOMA</th><td style="padding:12px 0;border-top:1px solid var(--line);color:var(--muted)">Carta de enmienda del mapa: una carta de FEMA que puede excluir una propiedad o estructura de la SFHA cuando se demuestra que está por encima de la elevación de inundación base.</td></tr>
+              <tr><th scope="row" style="text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-top:1px solid var(--line);white-space:nowrap">LOMR</th><td style="padding:12px 0;border-top:1px solid var(--line);color:var(--muted)">Carta de revisión del mapa: un cambio de FEMA al propio mapa, basado en datos nuevos o en cambios físicos del terreno.</td></tr>
+            </table>
+          </div>
+          <p class="fine" style="margin-top:14px;max-width:780px">Términos según el Programa Nacional de Seguro contra Inundaciones de FEMA; consulte <a href="https://www.fema.gov/flood-maps" target="_blank" rel="noopener" style="color:var(--aqua)">los mapas de inundación de FEMA (en inglés)</a>.</p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="shell">
+          <div class="eyebrow" style="color:var(--aqua)">Más del condado</div>
+          <h2>Otros recursos del condado de Gwinnett sobre inundaciones</h2>
+          <ul style="max-width:780px;padding-left:20px;margin:22px 0 0;font-size:18px;color:var(--muted)">
+            <li style="margin:0 0 12px">Los certificados de elevación están disponibles para algunas propiedades residenciales, no para todas, a través del Departamento de Planificación y Desarrollo del condado de Gwinnett.</li>
+            <li style="margin:0 0 12px">La página de información sobre inundaciones del condado también enlaza su documento del sistema de alerta de inundaciones y los requisitos de permisos para construir en planicies de inundación.</li>
+            <li style="margin:0 0 12px">La ordenanza de manejo de planicies de inundación del condado de Gwinnett restringe la construcción dentro de la planicie de inundación; las preguntas sobre construcción o cambios de mapas corresponden al condado.</li>
+          </ul>
+          <p class="fine" style="margin-top:14px;max-width:780px">Fuente: <a href="https://www.gwinnettcounty.com/government/departments/planning-development/building-services/flood-information" target="_blank" rel="noopener" style="color:var(--aqua)">información sobre inundaciones del condado de Gwinnett (en inglés)</a> (consultada el 31 de octubre de 2026).</p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <div class="shell">
+          <div class="eyebrow" style="color:var(--aqua)">Conozca los límites</div>
+          <h2>Lo que un mapa de inundación no puede decirle</h2>
+          <p class="lead">Un mapa de inundación es una herramienta de planificación y de seguros. No es:</p>
+          <ul style="max-width:780px;padding-left:20px;margin:14px 0 0;font-size:18px;color:var(--muted)">
+            <li style="margin:0 0 8px">una inspección de la vivienda;</li>
+            <li style="margin:0 0 8px">una evaluación de una fuga de plomería interior, una tubería reventada o un calentador de agua dañado;</li>
+            <li style="margin:0 0 8px">una revisión de todos los problemas de drenaje privado de un terreno;</li>
+            <li style="margin:0 0 8px">una garantía de que una propiedad se inundará o no.</li>
+          </ul>
+          <p class="lead">Water Damage Gwinnett no determina el riesgo de inundación de ninguna propiedad. Si ya hay agua dentro de su casa, por una inundación o por cualquier otra causa, aplican los pasos de nuestra <a href="flooded-basement.html" style="color:var(--aqua)">página de sótano inundado</a>, y podemos dirigir su llamada a un proveedor local independiente de restauración.</p>
+        </div>
+      </section>
+
+      <section class="dark-band">
+        <div class="shell grid">
+          <div>
+            <h2>Water Damage Gwinnett no es el condado ni FEMA</h2>
+            <p style="color:#dfeae7;max-width:560px">Somos un servicio de referidos y enrutamiento de llamadas. El condado y FEMA mantienen los mapas de arriba. Para la limpieza de daños por agua dentro de su casa, llame al (678) 833-0791 y dirigiremos su llamada a un proveedor independiente de restauración.</p>
+          </div>
+          <div class="call-panel">
+            <a aria-label="Llame a Water Damage Gwinnett al (678) 833-0791" class="disabled-cta" style="cursor:pointer;text-decoration:none" href="tel:+16788330791">Llame ahora: (678) 833-0791</a>
+            <p class="call-sub" style="margin:8px 0 0;font-size:14px;color:#c3d2cd">Lo conectaremos con un proveedor local de restauración.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="eyebrow" style="color:var(--aqua)">Respuestas claras</div>
+          <h2>Preguntas frecuentes sobre mapas de inundación</h2>
+          <p class="lead">Preguntas comunes sobre los mapas de inundación en el condado de Gwinnett, respondidas con claridad.</p>
+          <div class="faq-list">
+            <details><summary>¿Cómo encuentro los mapas de inundación de mi propiedad en el condado de Gwinnett?</summary><p class="faq-answer">Empiece por la página de información sobre inundaciones del condado de Gwinnett y el portal de información sobre inundaciones de Gwinnett; luego busque la dirección en el Centro de Servicio de Mapas de Inundación de FEMA, que contiene los mapas oficiales que se usan para el seguro contra inundaciones.</p></details>
+            <details><summary>¿Dónde puedo consultar una zona de inundación de FEMA por dirección?</summary><p class="faq-answer">En el Centro de Servicio de Mapas de Inundación de FEMA, en msc.fema.gov. Escriba la dirección, abra el mapa vigente de esa ubicación y anote el número de panel y la fecha de vigencia. Puede guardar o imprimir un FIRMette para sus registros.</p></details>
+            <details><summary>¿Qué significa una inundación con probabilidad anual del 1%?</summary><p class="faq-answer">Es una inundación con una probabilidad de 1 en 100 de ocurrir en cualquier año, a menudo llamada inundación de 100 años. El nombre engaña: puede ocurrir en años consecutivos. Las zonas especiales de peligro de inundación se mapean con esta norma.</p></details>
+            <details><summary>Si una propiedad está fuera de una zona de inundación mapeada, ¿significa que no puede inundarse?</summary><p class="faq-answer">No. Los mapas muestran peligros de inundación mapeados de ríos y arroyos. Las lluvias fuertes, el mal drenaje y las fallas de plomería pueden meter agua en cualquier casa. El condado de Gwinnett también señala que el seguro de vivienda estándar no cubre daños por inundación; esa cobertura es una póliza aparte.</p></details>
+            <details><summary>¿Dónde puedo encontrar un certificado de elevación?</summary><p class="faq-answer">El condado de Gwinnett indica que los certificados de elevación están disponibles para algunas propiedades residenciales, no para todas, a través de su Departamento de Planificación y Desarrollo. Consulte la página de información sobre inundaciones del condado para saber cómo solicitarlo.</p></details>
+            <details><summary>¿Qué hago si creo que un mapa de inundación de FEMA es incorrecto?</summary><p class="faq-answer">FEMA tiene un proceso para cambiar mapas. Una carta de enmienda del mapa (LOMA) puede excluir una propiedad o estructura de la zona especial de peligro de inundación cuando se demuestra que está por encima de la elevación de inundación base; una carta de revisión del mapa (LOMR) cambia el mapa con base en datos nuevos. La página de información sobre inundaciones del condado de Gwinnett explica los procedimientos locales de cambios de mapas y de construcción en planicies de inundación.</p></details>
+          </div>
+          <p class="fine" style="margin-top:26px">Fuentes (en inglés): <a href="https://www.gwinnettcounty.com/government/departments/planning-development/building-services/flood-information" target="_blank" rel="noopener" style="color:var(--aqua)">información sobre inundaciones del condado de Gwinnett</a> · <a href="https://www.gwinnettfloodplain.com/" target="_blank" rel="noopener" style="color:var(--aqua)">portal de información sobre inundaciones de Gwinnett</a> · <a href="https://msc.fema.gov/portal/home" target="_blank" rel="noopener" style="color:var(--aqua)">Centro de Servicio de Mapas de Inundación de FEMA</a> · <a href="https://www.georgiadfirm.com/" target="_blank" rel="noopener" style="color:var(--aqua)">Georgia DFIRM</a> · <a href="https://gwinnettcounty.com/static/departments/planning/pdf/2022-04-25_PLAN_Flood%20Brochure_Trifold_D1_%28002%29.pdf" target="_blank" rel="noopener" style="color:var(--aqua)">folleto del condado sobre inundaciones</a> (seguro de vivienda e inundaciones).</p>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-brand"><strong>Water Damage Gwinnett</strong><span>waterdamagegwinnett.com &middot; <a href="https://www.instagram.com/waterdamagegwinnett/" target="_blank" rel="noopener" style="color:inherit">Instagram</a> &middot; <a href="https://www.threads.com/@waterdamagegwinnett" target="_blank" rel="noopener" style="color:inherit">Threads</a> &middot; <a href="https://www.pinterest.com/waterdamagegwinnett/" target="_blank" rel="noopener" style="color:inherit">Pinterest</a> &middot; <a href="https://www.facebook.com/waterdamagegwinnett" target="_blank" rel="noopener" style="color:inherit">Facebook</a></span></div>
+      <p class="footer-note">Conectando a propietarios en el condado de Gwinnett con proveedores independientes de restauración de daños por agua.</p>
+      <p class="footer-note">Correo: <a href="mailto:contact@waterdamagegwinnett.com" style="color:inherit">contact@waterdamagegwinnett.com</a></p>
+    </div>
+  <div class="shell" style="padding-bottom:26px"><nav aria-label="Áreas de servicio" style="font-size:13px;color:var(--muted)">Áreas de servicio: <a href="lawrenceville.html" style="color:var(--aqua)">Lawrenceville</a> · <a href="duluth.html" style="color:var(--aqua)">Duluth</a> · <a href="suwanee.html" style="color:var(--aqua)">Suwanee</a> · <a href="snellville.html" style="color:var(--aqua)">Snellville</a> · <a href="norcross.html" style="color:var(--aqua)">Norcross</a> · <a href="buford.html" style="color:var(--aqua)">Buford</a> · <a href="dacula.html" style="color:var(--aqua)">Dacula</a> · <a href="lilburn.html" style="color:var(--aqua)">Lilburn</a> · <a href="grayson.html" style="color:var(--aqua)">Grayson</a> · <a href="loganville.html" style="color:var(--aqua)">Loganville</a> · <a href="water-damage-restoration-process.html" style="color:var(--aqua)">Proceso de restauración</a> · <a href="sewer-backup-gwinnett-county.html" style="color:var(--aqua)">Reflujo: a quién llamar</a> · <a href="gwinnett-county-flood-maps.html" style="color:var(--aqua)">Mapas de inundación</a> · <a href="fire-smoke-damage.html" style="color:var(--aqua)">Daños por fuego y humo</a> · <a href="mold-remediation.html" style="color:var(--aqua)">Remediación de moho</a> · <a href="mold-cleanup-guide.html" style="color:var(--aqua)">Ciencia de la limpieza del moho</a> · <a href="fire-science-guide.html" style="color:var(--aqua)">Ciencia del fuego</a> · <a href="plumbing-pipe-guide.html" style="color:var(--aqua)">Plomería y tuberías</a> · <a href="sewer-maintenance-guide.html" style="color:var(--aqua)">Alcantarillado y drenaje</a> · <a href="burst-pipe.html" style="color:var(--aqua)">Tubería reventada</a> · <a href="flooded-basement.html" style="color:var(--aqua)">Sótano inundado</a> · <a href="sewage-backup.html" style="color:var(--aqua)">Respaldo de alcantarilla</a> · <a href="freeze-prep-gwinnett.html" style="color:var(--aqua)">Preparación para heladas</a> · <a href="frozen-pipe.html" style="color:var(--aqua)">Tubería congelada</a> · <a href="ceiling-leak.html" style="color:var(--aqua)">Agua que gotea del techo</a> · <a href="burst-pipe-while-away.html" style="color:var(--aqua)">Llegó a casa y hay agua</a> · <a href="water-heater-leak.html" style="color:var(--aqua)">Fuga del calentador</a> · <a href="frozen-spigot-leak.html" style="color:var(--aqua)">Fuga de llave exterior</a> · <a href="how-it-works.html" style="color:var(--aqua)">Cómo funciona este servicio</a></nav><p style="font-size:13px;color:var(--muted);margin:10px 0 0"><a href="../privacy.html" style="color:var(--aqua)">Política de privacidad</a> · <a href="../terms.html" style="color:var(--aqua)">Términos del servicio</a></p></div>
+  <p class="footer-note" data-disclaimer="DISCLAIMER-5PART" style="max-width:100%">Es posible que los proveedores o redes de llamadas participantes a los que dirigimos las llamadas nos paguen una tarifa por cada llamada. Las llamadas se dirigen según la ubicación y la disponibilidad, no según una clasificación de calidad.</p>
+  <p class="footer-note" data-disclaimer="HOME-SERVICES" style="max-width:100%">Water Damage Gwinnett es un servicio gratuito para ayudar a los propietarios de vivienda a conectarse con proveedores de servicios locales. Todos los contratistas/proveedores son independientes y Water Damage Gwinnett no garantiza ni avala ningún trabajo realizado. Es responsabilidad del propietario verificar que el contratista contratado cuente con la licencia y el seguro necesarios para el trabajo a realizar. Todas las personas que aparecen en una foto o video son actores o modelos y no contratistas listados en Water Damage Gwinnett.</p>
+  </footer>
+  <div class="toast" role="status" aria-live="polite">Copiado</div>
+  <div class="mobile-call-bar"><a href="tel:+16788330791" aria-label="Llamar a Water Damage Gwinnett al (678) 833-0791">Llamar al (678) 833-0791</a></div>
+</body>
+</html>
