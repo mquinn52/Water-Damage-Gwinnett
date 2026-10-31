@@ -50,6 +50,12 @@ is signed.
   (lawrenceville.html, es/lawrenceville.html) since Oct 31, 2026. Service pages
   target Gwinnett County, not one city. Footer "Lawrenceville" links go to the
   city page, not "/".
+- City pages each carry a "Drainage and Stormwater Resources" section linking
+  the city's own page. Never add municipal phone numbers (the monitor allows
+  only the routing and county numbers); link the official page instead, and
+  date any infrastructure figure.
+- gwinnett-county-flood-maps.html (EN/ES) is the county flood-map guide; it
+  never states a property's flood risk.
 
 ## Open items (as of 2026-10-21)
 - BrokerCalls insertion order and agreement (unsigned; owner is consulting a
