@@ -46,6 +46,10 @@ is signed.
   ALLOWED_PHONES in monitor.yml when the routing number changes.
 - No Google Business Profile; structured data stays `Organization`.
 - City pages need verified local facts, never template copies.
+- The homepage is the Gwinnett County hub; Lawrenceville has its own city page
+  (lawrenceville.html, es/lawrenceville.html) since Oct 31, 2026. Service pages
+  target Gwinnett County, not one city. Footer "Lawrenceville" links go to the
+  city page, not "/".
 
 ## Open items (as of 2026-10-21)
 - BrokerCalls insertion order and agreement (unsigned; owner is consulting a

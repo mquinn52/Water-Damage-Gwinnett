@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- English pages — canonicals match hreflang/canonical tags on each page -->
-  <url><loc>https://waterdamagegwinnett.com/</loc><lastmod>2026-10-26</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/</loc><lastmod>2026-10-31</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://waterdamagegwinnett.com/duluth.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://waterdamagegwinnett.com/suwanee.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://waterdamagegwinnett.com/snellville.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -18,32 +18,32 @@
   <url><loc>https://waterdamagegwinnett.com/sewer-backup-gwinnett-county.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/sewer-backup-gwinnett-county.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://waterdamagegwinnett.com/dacula.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/fire-smoke-damage.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/mold-remediation.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/fire-smoke-damage.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/mold-remediation.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://waterdamagegwinnett.com/mold-cleanup-guide.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/fire-science-guide.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/plumbing-pipe-guide.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/sewer-maintenance-guide.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/burst-pipe.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/flooded-basement.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/sewage-backup.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/burst-pipe.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/flooded-basement.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/sewage-backup.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <!-- Spanish pages -->
-  <url><loc>https://waterdamagegwinnett.com/es/</loc><lastmod>2026-10-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/es/</loc><lastmod>2026-10-31</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/duluth.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/suwanee.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/snellville.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/norcross.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/buford.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/dacula.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/es/fire-smoke-damage.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/es/mold-remediation.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/es/fire-smoke-damage.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/es/mold-remediation.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/mold-cleanup-guide.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/fire-science-guide.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/plumbing-pipe-guide.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/sewer-maintenance-guide.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/es/burst-pipe.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/es/flooded-basement.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://waterdamagegwinnett.com/es/sewage-backup.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/es/burst-pipe.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/es/flooded-basement.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/es/sewage-backup.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://waterdamagegwinnett.com/mold-risk-quiz.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/mold-risk-quiz.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/privacy.html</loc><lastmod>2026-10-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
@@ -62,4 +62,6 @@
   <url><loc>https://waterdamagegwinnett.com/es/water-heater-leak.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://waterdamagegwinnett.com/frozen-spigot-leak.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://waterdamagegwinnett.com/es/frozen-spigot-leak.html</loc><lastmod>2026-10-26</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/lawrenceville.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://waterdamagegwinnett.com/es/lawrenceville.html</loc><lastmod>2026-10-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
