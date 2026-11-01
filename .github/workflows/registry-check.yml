@@ -1,0 +1,29 @@
+# Registry check (GLOBAL-PREVALIDATION): every page against .github/registry.json
+# and the RULES.md rule cards. Report-only: findings appear in the job summary
+# and as warnings, and the check always passes.
+#
+# To make it a merge gate (Matthew's decision, after a clean run):
+#   1. change STRICT below to "1", and
+#   2. in GitHub Settings > Branches, require the "Registry check" status.
+name: Registry check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry:
+    name: Registry check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0 (pinned)
+      - name: Check pages against the registry
+        env:
+          STRICT: "0"
+        run: python3 .github/scripts/registry_check.py
