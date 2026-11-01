@@ -101,7 +101,7 @@ def check_wdg(reg):
         (r"\bsame[- ]day\b|\bmismo d[ií]a\b", "WDG-CLAIMS"),
         (r"\bright now\b|\bahora mismo\b", "WDG-CLAIMS"),
         (r"\bevery minute counts\b|\bcada minuto cuenta\b", "WDG-CLAIMS"),
-        (r"\bhead start\b", "WDG-CLAIMS"),
+        (r"\bhead start\b|\bdando ventaja\b", "WDG-CLAIMS"),
         (r"\blicensed (?:&|&amp;|and) insured\b", "WDG-IDENTITY"),
         (r"\bnear me\b|\bcerca de m[ií]\b", "SEO-WRITING"),
     ]
