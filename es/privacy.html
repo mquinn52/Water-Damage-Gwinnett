@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<script>
+  // Google Analytics 4 loads only if the visitor hasn't opted out
+  // (Global Privacy Control signal or the opt-out on privacy.html).
+  (function () {
+    var optedOut = false;
+    try { optedOut = localStorage.getItem('wdg_analytics_optout') === '1'; } catch (e) {}
+    if (navigator.globalPrivacyControl === true || optedOut) {
+      window.gtag = function () {};
+      return;
+    }
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YBEBBTKPSW';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-YBEBBTKPSW');
+  })();
+  // Tap-to-call tracking. click_to_call = the routing number only (the
+  // revenue event); taps on the county's own line log as county_line_click so
+  // they never inflate call counts. Sent as a beacon so the hit survives the
+  // phone app taking over the screen.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+    if (!a || typeof gtag !== 'function') return;
+    var num = a.getAttribute('href').replace('tel:', '');
+    var section = a.closest('section, footer, nav');
+    gtag('event', num === '+16788330791' ? 'click_to_call' : 'county_line_click', {
+      page_path: location.pathname,
+      phone_number: num,
+      link_location: section ? (section.className || section.tagName.toLowerCase()).split(' ')[0] : 'page',
+      page_language: document.documentElement.lang || 'en',
+      transport_type: 'beacon'
+    });
+  });
+</script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Política de privacidad | Water Damage Gwinnett</title>
+  <meta name="description" content="Política de privacidad de Water Damage Gwinnett: cómo recopilamos, usamos y protegemos su información.">
+  <link rel="canonical" href="https://waterdamagegwinnett.com/es/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://waterdamagegwinnett.com/privacy.html">
+  <link rel="alternate" hreflang="es" href="https://waterdamagegwinnett.com/es/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://waterdamagegwinnett.com/privacy.html">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <meta property="og:title" content="Política de privacidad | Water Damage Gwinnett">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://waterdamagegwinnett.com/es/privacy.html">
+  <meta property="og:locale" content="es_US">
+  <meta property="og:image" content="https://waterdamagegwinnett.com/images/flooded-basement.webp">
+  <meta property="og:image:alt" content="Habitación interior con agua estancada que cubre el piso">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Franklin:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:light dark;--paper:#f4f7f6;--surface:#ffffff;--ink:#10221f;--muted:#536761;--line:#cbd7d3;--deep:#083e38;--deep-2:#052c29;--aqua:#0a776d;--lime:#d8f15b}
+    @media(prefers-color-scheme:dark){:root{--paper:#08110f;--surface:#101c19;--ink:#edf7f4;--muted:#aebfba;--line:#2b403b;--deep:#0d4e47;--deep-2:#062e2a;--aqua:#2cb7a8}}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.65}
+    .shell{max-width:820px;margin:auto;padding:0 24px}
+    header{background:var(--deep-2);color:#fff;padding:56px 0}
+    header h1{font-family:"Libre Franklin",sans-serif;font-size:clamp(32px,5vw,52px);letter-spacing:-.04em;margin:0}
+    header p{color:#c6d7d2;margin:12px 0 0}
+    header a{color:var(--lime);font-weight:700;text-decoration:none}
+    main{padding:48px 0 80px}
+    main h2{font-family:"Libre Franklin",sans-serif;font-size:24px;margin:38px 0 10px}
+    main p,main li{color:var(--ink)}
+    main ul{padding-left:22px}
+    .updated{color:var(--muted);font-size:14px}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
+    footer a{color:var(--aqua)}
+  
+/* mobile-fixes 2026-10-21: no sideways scroll, readable text, 24px+ tap targets */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img{max-width:100%}
+@media(max-width:820px){.split>*{min-width:0}.split img{height:auto;width:100%}.split-copy h2{overflow-wrap:anywhere}footer a,.site-footer a,figcaption a,.credit a{display:inline-block;padding:6px 2px}.footer-note,footer-brand span,figcaption,.credit,.fine{font-size:14px}figcaption a,.fine a{display:inline-block;padding:6px 2px}}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:1000;padding:10px 16px;border-radius:8px;background:#052c29;color:#fff;font-weight:700;text-decoration:none}.skip-link:focus{top:12px}main:focus{outline:none}
+  </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://waterdamagegwinnett.com/#organization","name":"Water Damage Gwinnett","url":"https://waterdamagegwinnett.com/","logo":"https://waterdamagegwinnett.com/images/apple-touch-icon.png","email":"contact@waterdamagegwinnett.com","telephone":"+1-678-833-0791","contactPoint":{"@type":"ContactPoint","telephone":"+1-678-833-0791","contactType":"customer service","areaServed":"Gwinnett County, GA","availableLanguage":["English","Spanish"]},"sameAs":["https://www.instagram.com/waterdamagegwinnett/","https://www.threads.com/@waterdamagegwinnett","https://www.pinterest.com/waterdamagegwinnett/","https://www.facebook.com/waterdamagegwinnett"]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+  <header>
+    <div class="shell">
+      <p><a href="/es/">← Volver a Water Damage Gwinnett</a></p>
+      <h1>Política de privacidad</h1>
+      <p>Cómo recopilamos, usamos y protegemos su información.</p>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="shell">
+      <p class="updated">Última actualización: 29 de octubre de 2026</p>
+
+      <h2>Quiénes somos</h2>
+      <p>Water Damage Gwinnett (&laquo;nosotros&raquo;) opera waterdamagegwinnett.com, un servicio de referidos y de enrutamiento de llamadas que conecta a propietarios de vivienda del área de Lawrenceville, Georgia, con proveedores independientes de servicios de restauración. No somos un contratista de restauración y no realizamos trabajos de restauración.</p>
+
+      <h2>Información que recopilamos</h2>
+      <ul>
+        <li><strong>Información de llamadas.</strong> Cuando usted llama al número de nuestro sitio, la red de enrutamiento de llamadas que opera ese número (actualmente Lead Smart Inc.) registra su número de teléfono y la fecha, la hora y la duración de la llamada. Las llamadas pueden grabarse; escuchará un breve aviso de grabación antes de que se le conecte.</li>
+        <li><strong>Información que usted nos da.</strong> Si nos contacta por correo electrónico o formulario, recibimos su nombre, sus datos de contacto y el contenido de su mensaje.</li>
+        <li><strong>Analítica del sitio web.</strong> Usamos Google Analytics 4, que coloca cookies y recopila datos de uso como las páginas visitadas, el tipo de dispositivo y navegador, la ubicación aproximada (derivada de la dirección IP) y el sitio de procedencia. También registramos cuando alguien toca un enlace telefónico, anotando solo la página y nuestro número de seguimiento &mdash; no su número. Google procesa estos datos según <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">su propia política de privacidad</a>. Los usamos solo para mejorar el sitio, no para publicidad.</li>
+      </ul>
+
+      <h2>Cómo usamos su información</h2>
+      <ul>
+        <li>Para dirigir su llamada a un proveedor independiente de servicios de restauración.</li>
+        <li>Para verificar la calidad de las llamadas y resolver disputas de facturación o de servicio, incluso pidiendo a nuestra red de enrutamiento de llamadas que revise sus registros de llamadas.</li>
+        <li>Para responder a sus consultas.</li>
+        <li>Para mejorar nuestro sitio web y nuestros servicios.</li>
+      </ul>
+      <p>No vendemos su información personal.</p>
+
+      <h2>Cuándo compartimos su información</h2>
+      <ul>
+        <li><strong>Proveedores de servicios.</strong> Cuando usted llama, su número de teléfono y los detalles de la llamada se comparten con el proveedor de restauración independiente al que se dirige su llamada, para que pueda atenderle. La disponibilidad, los precios y la calidad del servicio los determina ese proveedor, no nosotros.</li>
+        <li><strong>Red de enrutamiento de llamadas.</strong> El número de teléfono de nuestro sitio lo opera Lead Smart Inc., que dirige su llamada, registra los detalles de la llamada y graba las llamadas según sus propias prácticas.</li>
+        <li><strong>Requisitos legales.</strong> Podemos divulgar información si la ley lo exige o para proteger nuestros derechos.</li>
+      </ul>
+
+      <h2>Devoluciones de llamada y mensajes de texto</h2>
+      <p>El proveedor al que se dirige su llamada recibe su número de teléfono y puede llamarle o enviarle un mensaje de texto sobre la solicitud de servicio que usted hizo, por ejemplo si la llamada se corta. No usamos su número para marketing, no enviamos mensajes de texto de marketing y no damos su número a nadie para marketing. Si un proveedor se comunica con usted de una manera que usted no pidió, avísenos en la dirección de abajo.</p>
+
+      <h2>Cómo se nos paga</h2>
+      <p>El servicio es gratuito para los propietarios de vivienda. Es posible que los proveedores o redes de llamadas participantes a los que dirigimos las llamadas nos paguen una tarifa por cada llamada. Las llamadas se dirigen según la ubicación y la disponibilidad, no según una clasificación de calidad.</p>
+
+      <h2>Grabación de llamadas</h2>
+      <p>Las llamadas hechas a través de nuestro número pueden ser grabadas por nuestra red de enrutamiento de llamadas. Un breve aviso de grabación se reproduce antes de que se le conecte. Al permanecer en la línea después del aviso, usted acepta la grabación. No guardamos grabaciones de las llamadas al número de nuestro sitio; la red las conserva según sus propias prácticas de retención. Si desea que se elimine la grabación de su llamada, escríbanos por correo electrónico y pasaremos su solicitud a la red.</p>
+
+      <h2>Sus opciones y derechos</h2>
+      <p>Puede solicitar una copia, una corrección o la eliminación de su información personal escribiendo a <a href="mailto:contact@waterdamagegwinnett.com">contact@waterdamagegwinnett.com</a>. Para ayudarnos a encontrar su información, incluya el nombre y el número de teléfono o el correo electrónico que usó al contactarnos, y describa lo que solicita. Respondemos a las solicitudes verificables en un plazo de 45 días.</p>
+      <ul>
+        <li><strong>Exclusión.</strong> No vendemos su información personal. Si desea que dejemos de compartir su información con proveedores de servicios para cualquier fin que no sea dirigir su llamada, escríbanos a la dirección de arriba con &laquo;Privacy Request&raquo; en el asunto.</li>
+        <li><strong>Analítica.</strong> Si su navegador envía una señal de <a href="https://globalprivacycontrol.org/" target="_blank" rel="noopener">Global Privacy Control</a>, la tratamos como una exclusión y no cargamos Google Analytics. También puede desactivar la analítica en este navegador con el botón de abajo, o usar el <a href="https://tools.google.com/dlpage/gaoptout?hl=es" target="_blank" rel="noopener">complemento de inhabilitación para navegadores</a> de Google.</li>
+      </ul>
+      <p><button type="button" id="analyticsToggle" style="font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer">Desactivar la analítica en este navegador</button></p>
+      <p id="analyticsStatus" role="status"></p>
+
+      <h2>Cuánto tiempo conservamos su información</h2>
+      <ul>
+        <li><strong>Grabaciones y detalles de llamadas</strong> (número de teléfono, fecha, hora, duración): los conserva nuestra red de enrutamiento de llamadas según sus propias prácticas de retención; nosotros no guardamos copias.</li>
+        <li><strong>Correspondencia por correo electrónico y formularios:</strong> hasta 2 años después de nuestra última interacción.</li>
+      </ul>
+      <p>Conservamos la información solo el tiempo necesario para los fines descritos en esta política y después la eliminamos o la anonimizamos.</p>
+
+      <h2>Seguridad de los datos</h2>
+      <p>Usamos medidas administrativas y técnicas razonables para proteger su información. Ningún método de transmisión por internet es completamente seguro, y no podemos garantizar una seguridad absoluta.</p>
+
+      <h2>Menores</h2>
+      <p>Nuestro servicio no está dirigido a menores de 13 años, y no recopilamos a sabiendas información de ellos.</p>
+
+      <h2>Cambios a esta política</h2>
+      <p>Podemos actualizar esta política de vez en cuando. La fecha de &laquo;última actualización&raquo; de arriba indica la revisión más reciente.</p>
+
+      <h2>Contáctenos</h2>
+      <p>Preguntas sobre esta política: <a href="mailto:contact@waterdamagegwinnett.com">contact@waterdamagegwinnett.com</a></p>
+    </div>
+  </main>
+  <footer>
+    <div class="shell">
+      Water Damage Gwinnett · Lawrenceville, GA 30044 · <a href="/es/terms.html">Términos del servicio</a> · <a href="/es/">Inicio</a>
+    </div>
+  <div class="shell"><p data-disclaimer="DISCLAIMER-5PART" style="font-size:13px;color:var(--muted);margin:12px 0 0">Es posible que los proveedores o redes de llamadas participantes a los que dirigimos las llamadas nos paguen una tarifa por cada llamada. Las llamadas se dirigen según la ubicación y la disponibilidad, no según una clasificación de calidad.</p>
+  <p class="footer-note" data-disclaimer="HOME-SERVICES" style="max-width:100%">Water Damage Gwinnett es un servicio gratuito para ayudar a los propietarios de vivienda a conectarse con proveedores de servicios locales. Todos los contratistas/proveedores son independientes y Water Damage Gwinnett no garantiza ni avala ningún trabajo realizado. Es responsabilidad del propietario verificar que el contratista contratado cuente con la licencia y el seguro necesarios para el trabajo a realizar. Todas las personas que aparecen en una foto o video son actores o modelos y no contratistas listados en Water Damage Gwinnett.</p></div>
+  </footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('analyticsToggle');
+  var status = document.getElementById('analyticsStatus');
+  if (!btn) return;
+  function get() { try { return localStorage.getItem('wdg_analytics_optout') === '1'; } catch (e) { return false; } }
+  function render() {
+    if (navigator.globalPrivacyControl === true) {
+      btn.disabled = true;
+      status.textContent = 'Su navegador está enviando una señal de Global Privacy Control, así que la analítica ya está desactivada.';
+      return;
+    }
+    var off = get();
+    btn.textContent = off ? 'Volver a activar la analítica' : 'Desactivar la analítica en este navegador';
+    status.textContent = off ? 'La analítica está desactivada en este navegador.' : '';
+  }
+  btn.addEventListener('click', function () {
+    try {
+      if (get()) { localStorage.removeItem('wdg_analytics_optout'); }
+      else { localStorage.setItem('wdg_analytics_optout', '1'); }
+    } catch (e) { status.textContent = 'Su navegador bloqueó guardar esta opción; pruebe en su lugar el complemento de inhabilitación de Google.'; return; }
+    render();
+    if (get()) { status.textContent = 'La analítica está desactivada en este navegador. Se detiene a partir de la próxima página que cargue.'; }
+  });
+  render();
+})();
+</script>
+</body>
+</html>
