@@ -78,6 +78,11 @@ def blocks(s):
     return [re.sub(r"\s+", " ", ln).strip() for ln in t.split("\n") if ln.strip()]
 
 
+def meta_text(s):
+    """Meta and social descriptions, which the rule cards cover like visible copy."""
+    return [html.unescape(c) for c in re.findall(r'<meta\s+(?:name|property)="(?:description|og:description|twitter:description)"\s+content="([^"]*)"', s, re.I)]
+
+
 def sentences(lines):
     out = []
     for ln in lines:
@@ -96,7 +101,7 @@ def check_wdg(reg):
         (r"\bsame[- ]day\b|\bmismo d[ií]a\b", "WDG-CLAIMS"),
         (r"\bright now\b|\bahora mismo\b", "WDG-CLAIMS"),
         (r"\bevery minute counts\b|\bcada minuto cuenta\b", "WDG-CLAIMS"),
-        (r"\bhead start\b", "WDG-CLAIMS"),
+        (r"\bhead start\b|\bdando ventaja\b", "WDG-CLAIMS"),
         (r"\blicensed (?:&|&amp;|and) insured\b", "WDG-IDENTITY"),
         (r"\bnear me\b|\bcerca de m[ií]\b", "SEO-WRITING"),
     ]
@@ -135,9 +140,12 @@ def check_wdg(reg):
                 add("exception", "WDG-CLAIMS", f, "24/7 describing the county line: " + ctx[120:260])
             else:
                 add("violation", "WDG-CLAIMS", f, "24/7 not tied to the county line: " + ctx[100:260])
-        for pat, rule in banned:
-            for m in re.finditer(pat, v, re.I):
-                add("violation", rule, f, v[max(0, m.start() - 80): m.end() + 80])
+        allow = [e for e in reg.get("allowlist_exact", {}).get("entries", []) if f.replace(os.sep, "/") in e.get("pages", [])]
+        for blk in blocks(s) + meta_text(s):
+            for pat, rule in banned:
+                for m in re.finditer(pat, blk, re.I):
+                    ok = any(e.get("block") == blk or (e.get("text") and e["text"] in blk) for e in allow)
+                    add("exception" if ok else "violation", rule, f, ("approved safety phrase: " if ok else "") + blk[max(0, m.start() - 80): m.end() + 80])
         jsonld(f, s)
         # bilingual pairs
         twin = (f[3:] if lang == "es" else os.path.join("es", f))
@@ -185,12 +193,13 @@ def check_mito(reg):
             add("violation", "MITO-DISCLOSURE", f, "affiliate links with no group disclosure on the page")
         for m in re.finditer(r"(?<![\w$])\$\s?\d", v):
             add("violation", "MITO-PRICES", f, "printed price: " + v[max(0, m.start() - 60): m.end() + 40])
+        vm = v + " " + " ".join(meta_text(s))
         for pat, rule in banned:
-            for m in re.finditer(pat, v, re.I):
-                ctx = v[max(0, m.start() - 90): m.end() + 60]
-                before = v[max(0, m.start() - 60): m.start()]
+            for m in re.finditer(pat, vm, re.I):
+                ctx = vm[max(0, m.start() - 90): m.end() + 60]
+                before = vm[max(0, m.start() - 60): m.start()]
                 neg = re.search(r"\b(?:never|not|no|don[’']t|doesn[’']t|isn[’']t|aren[’']t|haven[’']t|won[’']t|without|fake|cut every)\b[^.]{0,40}$", before, re.I)
-                if not neg and re.match(r"detox", m.group(), re.I) and re.match(r"\s*(?:claim|myth)", v[m.end(): m.end() + 8], re.I):
+                if not neg and re.match(r"detox", m.group(), re.I) and re.match(r"\s*(?:claim|myth)", vm[m.end(): m.end() + 8], re.I):
                     neg = True  # discussing detox claims, not making one
                 add("exception" if neg else "violation", rule, f, ("negated: " if neg else "") + ctx)
         jsonld(f, s)

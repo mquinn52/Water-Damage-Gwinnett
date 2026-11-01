@@ -69,5 +69,75 @@
     "24/7": "Only when it describes PHONE_COUNTY, the county's own line",
     "Emergency": "Only as a neutral label or content category",
     "Call": "The footer call button label"
+  },
+  "allowlist_exact": {
+    "_note": "Exact safety phrases approved by Matthew on Oct 31, 2026 as narrow exceptions to the urgency ban (WDG-CLAIMS). 'text' must appear verbatim in the same block as the match; 'block' must be the whole block (a section label). Nothing similar is allowed by extension.",
+    "entries": [
+      {
+        "text": "here is what to do right now",
+        "pages": [
+          "sewage-backup.html"
+        ],
+        "why": "safety steps for a sewage backup"
+      },
+      {
+        "text": "If sewage is backing up right now",
+        "pages": [
+          "sewage-backup.html"
+        ],
+        "why": "routes an active backup to the county first"
+      },
+      {
+        "text": "Sewage Backup: Three Moves Right Now",
+        "pages": [
+          "sewage-backup.html"
+        ],
+        "why": "heading over the three safety steps"
+      },
+      {
+        "block": "Right now",
+        "pages": [
+          "sewage-backup.html",
+          "frozen-spigot-leak.html"
+        ],
+        "why": "section label over safety steps"
+      },
+      {
+        "text": "the signs of a hidden leak, and what to do right now",
+        "pages": [
+          "frozen-spigot-leak.html"
+        ],
+        "why": "meta description for the safety steps"
+      },
+      {
+        "text": "esto es lo que debe hacer ahora mismo",
+        "pages": [
+          "es/sewage-backup.html"
+        ],
+        "why": "pasos de seguridad"
+      },
+      {
+        "text": "Si las aguas residuales están subiendo ahora mismo",
+        "pages": [
+          "es/sewage-backup.html"
+        ],
+        "why": "dirige primero al condado"
+      },
+      {
+        "text": "Respaldo de alcantarilla: tres movimientos ahora mismo",
+        "pages": [
+          "es/sewage-backup.html"
+        ],
+        "why": "encabezado de los pasos"
+      },
+      {
+        "block": "Ahora mismo",
+        "pages": [
+          "es/sewage-backup.html",
+          "es/frozen-spigot-leak.html"
+        ],
+        "why": "etiqueta de sección"
+      }
+    ]
   }
 }
