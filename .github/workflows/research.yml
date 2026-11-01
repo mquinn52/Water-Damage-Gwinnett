@@ -25,6 +25,20 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0 (pinned)
 
+      # Snapshots live on the research-snapshots branch, not main: main requires
+      # the Registry check, which rejects direct pushes from this workflow.
+      - name: Load the latest snapshots
+        run: |
+          if git ls-remote --exit-code --heads origin research-snapshots >/dev/null; then
+            git fetch -q origin research-snapshots
+            rm -rf research/snapshots
+            git restore --source=FETCH_HEAD --worktree -- research/snapshots
+            git restore --source=FETCH_HEAD --worktree -- research/failures.json 2>/dev/null || true
+            echo "Loaded snapshots from research-snapshots."
+          else
+            echo "No research-snapshots branch yet; starting from main's snapshots."
+          fi
+
       - name: Check watched sources
         id: watch
         run: |
@@ -45,14 +59,30 @@ jobs:
           SITE_URL: https://waterdamagegwinnett.com
         run: python3 .github/scripts/ai_review.py
 
-      - name: Save snapshots
+      - name: Save snapshots to the research-snapshots branch
         run: |
-          git config user.name "research-bot"
-          git config user.email "research-bot@users.noreply.github.com"
-          git add research/snapshots research/failures.json
+          git config --global user.name "research-bot"
+          git config --global user.email "research-bot@users.noreply.github.com"
+          tmp="$(mktemp -d)/snap"
+          if git ls-remote --exit-code --heads origin research-snapshots >/dev/null; then
+            git fetch -q origin research-snapshots
+            git worktree add -q "$tmp" FETCH_HEAD
+          else
+            git worktree add -q "$tmp" HEAD
+          fi
+          mkdir -p "$tmp/research"
+          rm -rf "$tmp/research/snapshots"
+          cp -r research/snapshots "$tmp/research/snapshots"
+          [ -f research/failures.json ] && cp research/failures.json "$tmp/research/failures.json"
+          cd "$tmp"
+          git add -A research/snapshots
+          [ -f research/failures.json ] && git add research/failures.json
           if ! git diff --cached --quiet; then
-            git commit -m "Research snapshots: $(date -u +%F)"
-            git push
+            git commit -q -m "Research snapshots: $(date -u +%F)"
+            git push -q origin HEAD:refs/heads/research-snapshots
+            echo "Saved snapshots to research-snapshots."
+          else
+            echo "No snapshot changes."
           fi
 
       - name: Propose rule changes as a pull request
