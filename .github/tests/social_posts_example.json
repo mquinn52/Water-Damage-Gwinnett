@@ -1,0 +1,22 @@
+[
+  {"id": "good-en", "platform": "pinterest", "lang": "en", "cta": true, "has_image": true,
+   "title": "Find your main water shutoff valve, Gwinnett County",
+   "text": "Most Gwinnett homes have the main shutoff where the water line enters the house. Find yours before a freeze. If you have active water damage, here's how to reach a local provider. We may be paid a fee for calls we route to independent providers. #FreezePrep #GwinnettCounty",
+   "alt": "A hand turning a red-handled water shutoff valve in a basement. Text on image: Find your main shutoff.",
+   "image_text": "Find your main shutoff",
+   "link": "https://waterdamagegwinnett.com/freeze-prep-gwinnett.html?utm_source=pinterest&utm_medium=social&utm_campaign=freeze-prep"},
+  {"id": "good-es", "platform": "facebook", "lang": "es", "cta": false,
+   "text": "La EPA de EE. UU. indica: “Es importante secar los lugares y objetos dañados por el agua en las siguientes 24 a 48 horas a fin de evitar que crezca el moho.” #MohoEnCasa",
+   "link": "https://waterdamagegwinnett.com/es/mold-cleanup-guide.html?utm_source=facebook&utm_medium=social&utm_campaign=mold"},
+  {"id": "bad-1", "platform": "instagram", "lang": "en", "cta": true, "has_image": true,
+   "title": "Mold starts in 24-48 hours",
+   "text": "MOLD STARTS IN 24 TO 48 HOURS. Our trusted crew is available 24/7, call (678) 833-0791 right now! #waterdamagegwinnett",
+   "alt": "", "image_text": "MOLD STARTS IN 24-48 HOURS",
+   "link": "https://waterdamagegwinnett.com/mold-remediation.html"},
+  {"id": "bad-2", "platform": "threads", "lang": "es", "cta": true,
+   "text": "Llámenos hoy, servicio el mismo día.",
+   "link": "https://waterdamagegwinnett.com/burst-pipe.html?utm_source=threads&utm_medium=social&utm_campaign=burst-pipe"},
+  {"id": "county-ok", "platform": "facebook", "lang": "en", "cta": false,
+   "text": "Sewage backing up? Gwinnett County runs its own 24/7 line for public sewer problems; see who to call first.",
+   "link": "https://waterdamagegwinnett.com/sewer-backup-gwinnett-county.html?utm_source=facebook&utm_medium=social&utm_campaign=sewer-backup"}
+]
