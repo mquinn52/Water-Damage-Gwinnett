@@ -1,5 +1,5 @@
 {
-  "_about": "Canonical strings for waterdamagegwinnett.com (RULES.md section 0.4, WDG-REGISTRY). Rules, templates and monitors read these exact values; change a string here and in the pages in the same PR. Lives under .github/ so it is never deployed or served.",
+  "_about": "Canonical strings for waterdamagegwinnett.com (RULES.md 0.4, WDG-REGISTRY). This file owns the exact approved text; RULES.md owns the policy and conditions. Pages, templates and monitors read these values, and any mismatch fails validation (from PR 3). Change a string here and in the pages in the same PR. Lives under .github/ so it is never deployed or served.",
   "_last_reviewed": "2026-10-31",
   "phones": {
     "PHONE_ROUTING": {
