@@ -139,5 +139,27 @@
         "why": "etiqueta de sección"
       }
     ]
+  },
+  "social": {
+    "_about": "Social pre-check (social_check.py) strings, from SOCIAL.md. Exact text; change here and in SOCIAL.md together.",
+    "site": "wdg",
+    "domain": "waterdamagegwinnett.com",
+    "other_domain": "mitothrum.com",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "threads",
+      "pinterest"
+    ],
+    "SOCIAL_DISCLOSURE_EN": {
+      "text": "We may be paid a fee for calls we route to independent providers.",
+      "where": "Every call-to-action post",
+      "rule": "SOC-WDG-DISCLOSURE (SOCIAL.md ground rules)"
+    },
+    "SOCIAL_DISCLOSURE_ES": {
+      "text": "Es posible que nos paguen una tarifa por las llamadas que dirigimos a proveedores independientes.",
+      "where": "Every Spanish call-to-action post",
+      "rule": "SOC-WDG-DISCLOSURE"
+    }
   }
 }
