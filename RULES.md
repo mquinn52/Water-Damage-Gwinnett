@@ -46,7 +46,8 @@ numbers below are unchanged; rule IDs sit beside them so existing citations stil
 - 3.4 Check Google Ads' current verification requirements for this category before running ads; ads must not imply we do the work.
 - 3.5 One canonical host (no `www`), hreflang between English and Spanish pages, sitemap with dates.
 - 3.6 `SEO-THRESHOLDS` A CTR-based title or meta rewrite starts only after 50 impressions over a rolling 90 days, read at the URL and query-group level against the previous period. That is a review trigger, not proof. Diagnose by query: average position blends many queries, so never read it as a page number. A title that is inaccurate, misleading or breaks a rule is fixed regardless of volume.
-- 3.7 Bilingual parity: every Spanish twin carries the same facts, limits, disclosures and call to action, and never adds a claim the English page couldn't make.
+- 3.7 Bilingual parity: every Spanish twin carries the same facts, limits, disclosures and call to action, and never adds a claim the English page couldn't make. `WDG-BILINGUAL-RELEASE` Both languages ship in the same scope and PR, with hreflang, canonicals and FAQ schema checked in both; an exception needs Matthew's approval.
+- 3.8 `WDG-GEOGRAPHIC-OPTIMIZATION` No new city pages without Matthew's approval to change the SEO strategy. Rank effort on existing city pages by commercial intent, query-level opportunity, impressions and clicks, then Lead Smart qualified calls and revenue per call where available, against upkeep cost. High impressions start a review; they don't prove value. Existing city pages stay maintained unless Matthew approves retirement (0.7).
 
 ## 4. Safety information `WDG-CLAIMS`
 - 4.1 Life-safety guidance comes first: call 911 for immediate danger; don't enter standing water near electricity.
@@ -110,7 +111,7 @@ the chosen offer's rules before activating it.
 - 9.19 Payouts go through Tipalti (ACH, wire, PayPal or e-check) to the Guardian Bridge BlueVine account, 1–3 business days after a withdrawal request. Confirm the minimum and payout cycle on the dashboard.
 
 ## Changelog
-- 2026-10-31: v2.1 structure (Project Guidelines approved by Matthew): added section 0 (authority, rule language, evidence labels, registry, records, PR workflow, page retirement, dates, cross-site ban); rule IDs beside section headings; 1.4 made a review event; 3.6 SEO thresholds and 3.7 bilingual parity added; 4.3 tied to the registry; 9.16 Ringba scoped to the Marketcall case. 0.1 separates one-time approvals from standing-rule changes; 0.4 makes the registry the owner of exact text. 4.3 now uses EPA's exact English and Spanish wording (registry `EPA_MOLD_EN`/`EPA_MOLD_ES`). County line re-verified on the county contact page. No live page changes.
+- 2026-10-31: v2.1 structure (Project Guidelines approved by Matthew): added section 0 (authority, rule language, evidence labels, registry, records, PR workflow, page retirement, dates, cross-site ban); rule IDs beside section headings; 1.4 made a review event; 3.6 SEO thresholds and 3.7 bilingual parity added; 4.3 tied to the registry; 9.16 Ringba scoped to the Marketcall case. 0.1 separates one-time approvals from standing-rule changes; 0.4 makes the registry the owner of exact text. 4.3 now uses EPA's exact English and Spanish wording (registry `EPA_MOLD_EN`/`EPA_MOLD_ES`). v2.3 (confirmed Oct 31): 3.7 adds same-PR bilingual release; 3.8 adds city-page prioritization. County line re-verified on the county contact page. No live page changes.
 - 2026-10-29: Section 9 header updated: Marketcall account approved.
 - 2026-10-29: Added section 9 (Marketcall rules, from its help center and signup agreement).
 - 2026-10-26: 8.7 widened to all four social profiles; social playbook moved to SOCIAL.md.
