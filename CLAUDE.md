@@ -38,7 +38,9 @@ is signed.
   loads and matches the repo; opens/closes `site-monitor` issues.
 - `research.yml` Mondays: snapshots policy sources in `research/sources.json`
   (Google, Business Profile guidelines, Federal Register FTC/FCC feeds,
-  Gwinnett water contact page); opens a `research` issue on change.
+  Gwinnett water contact page); saves snapshots on the `research-snapshots` branch (main
+  requires the Registry check, which blocks the bot's direct pushes), and opens
+  a `research` issue on change.
 - `invoice-reminder.yml` on the 1st: 90-day invoicing deadline issue.
 
 ## Hard rules (details in RULES.md)
