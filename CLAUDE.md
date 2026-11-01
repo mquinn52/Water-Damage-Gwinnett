@@ -29,6 +29,10 @@ is signed.
 - Every English page has a Spanish twin in /es/ with hreflang; change both.
 
 ## Automation already running
+- `registry-check.yml` on every PR and push to main: `.github/scripts/registry_check.py`
+  checks every page against `.github/registry.json` and the RULES.md rule cards,
+  naming the rule ID, file, text and whether it's a violation or an approved
+  exception. Report-only until Matthew sets STRICT=1 and requires the check.
 - `monitor.yml` daily 7 a.m. ET and after each deploy: payment disclosure on
   every page (EN or ES), only allowed phone numbers, every live sitemap URL
   loads and matches the repo; opens/closes `site-monitor` issues.
