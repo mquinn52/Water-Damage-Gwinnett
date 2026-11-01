@@ -103,6 +103,8 @@ def check_wdg(reg):
         (r"\bevery minute counts\b|\bcada minuto cuenta\b", "WDG-CLAIMS"),
         (r"\bhead start\b|\bdando ventaja\b", "WDG-CLAIMS"),
         (r"\blicensed (?:&|&amp;|and) insured\b", "WDG-IDENTITY"),
+        # Service positioned as built for urgency (Matthew, Oct 31 2026). Safety steps and neutral "Emergency" labels stay allowed.
+        (r"\b(?:designed|built|made|intended) for (?:urgent|emergency|emergencies)\b|\bfor urgent situations\b|\b(?:pensad|diseñad|cread)[oa] para (?:situaciones )?(?:urgentes|urgencias|emergencias)\b|\bpara situaciones urgentes\b", "WDG-CLAIMS"),
         (r"\bnear me\b|\bcerca de m[ií]\b", "SEO-WRITING"),
     ]
     all_pages = pages()
