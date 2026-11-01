@@ -1,0 +1,64 @@
+{
+  "_about": "Canonical strings for waterdamagegwinnett.com (RULES.md section 0.4, WDG-REGISTRY). Rules, templates and monitors read these exact values; change a string here and in the pages in the same PR. Lives under .github/ so it is never deployed or served.",
+  "_last_reviewed": "2026-10-31",
+  "phones": {
+    "PHONE_ROUTING": {
+      "e164": "+16788330791",
+      "display": "(678) 833-0791",
+      "owner": "Lead Smart (call routing)",
+      "web": true,
+      "social": false,
+      "source": "Lead Smart account; RULES.md 2.1"
+    },
+    "PHONE_COUNTY": {
+      "e164": "+16783767000",
+      "display": "(678) 376-7000",
+      "owner": "Gwinnett County Water Resources 24/7 emergency line",
+      "web": true,
+      "social": false,
+      "source": "https://www.gwinnettcounty.com/government/departments/water/contact",
+      "verified": "2026-10-31"
+    }
+  },
+  "strings": {
+    "FEE_DISCLOSURE_EN": {
+      "text": "We may be paid a fee for each call by the participating providers or call networks we route calls to. Calls are routed based on location and availability, not a ranking of quality.",
+      "marker": "data-disclaimer=\"DISCLAIMER-5PART\"",
+      "where": "Footer of every English page",
+      "rule": "WDG-DISCLOSURE (RULES.md 1.1, 1.4)"
+    },
+    "FEE_DISCLOSURE_ES": {
+      "text": "Es posible que los proveedores o redes de llamadas participantes a los que dirigimos las llamadas nos paguen una tarifa por cada llamada. Las llamadas se dirigen según la ubicación y la disponibilidad, no según una clasificación de calidad.",
+      "marker": "data-disclaimer=\"DISCLAIMER-5PART\"",
+      "where": "Footer of every Spanish page (/es/)",
+      "rule": "WDG-DISCLOSURE (RULES.md 1.1, 1.4)"
+    },
+    "HOME_SERVICES_DISCLAIMER_EN": {
+      "text": "Water Damage Gwinnett is a free service to assist homeowners in connecting with local service providers. All contractors/providers are independent and Water Damage Gwinnett does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on Water Damage Gwinnett.",
+      "marker": "data-disclaimer=\"HOME-SERVICES\"",
+      "where": "Footer of every English page",
+      "rule": "WDG-DISCLOSURE (RULES.md 9.4); re-check against Marketcall's Creative Submission Rules when the offer activates"
+    },
+    "HOME_SERVICES_DISCLAIMER_ES": {
+      "text": "Water Damage Gwinnett es un servicio gratuito para ayudar a los propietarios de vivienda a conectarse con proveedores de servicios locales. Todos los contratistas/proveedores son independientes y Water Damage Gwinnett no garantiza ni avala ningún trabajo realizado. Es responsabilidad del propietario verificar que el contratista contratado cuente con la licencia y el seguro necesarios para el trabajo a realizar. Todas las personas que aparecen en una foto o video son actores o modelos y no contratistas listados en Water Damage Gwinnett.",
+      "marker": "data-disclaimer=\"HOME-SERVICES\"",
+      "where": "Footer of every Spanish page (/es/)",
+      "rule": "WDG-DISCLOSURE (RULES.md 9.4)"
+    },
+    "EPA_MOLD_EN": {
+      "text": "The U.S. EPA advises drying water-damaged materials within 24 to 48 hours to help prevent mold growth.",
+      "where": "Any English page that states mold timing; link the EPA source",
+      "rule": "WDG-CLAIMS (RULES.md 4.3)"
+    }
+  },
+  "allowlist_phrases": {
+    "_note": "Exact contexts the banned-language scan must allow (WDG-CLAIMS exceptions). An exception never licenses a similar claim.",
+    "24/7": "Only when it describes PHONE_COUNTY, the county's own line",
+    "Emergency": "Only as a neutral label or content category",
+    "Call": "The footer call button label"
+  },
+  "open_items": [
+    "EPA_MOLD_ES: no single Spanish canonical sentence exists yet; Spanish pages use several wordings. Matthew to approve one before PR 3 enforces it.",
+    "English pages carry EPA paraphrases that differ from EPA_MOLD_EN (see the PR description). No live copy changes in this PR; listed for a follow-up copy PR."
+  ]
+}

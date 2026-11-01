@@ -39,8 +39,9 @@ is signed.
 
 ## Hard rules (details in RULES.md)
 - Footer disclosure (EN/ES): "may be paid a fee for each call … routed based on
-  location and availability, not a ranking of quality." Change "may be paid"
-  to "are paid" once paid calls start.
+  location and availability, not a ranking of quality." Exact EN/ES text lives
+  in `.github/registry.json`. The first paid call triggers a wording review
+  (RULES.md 1.4), not an automatic switch to "are paid."
 - Allowed phone numbers: +16788330791 (routing) and +16783767000 (Gwinnett
   County 24/7 water emergency line, verified on the county site). Update
   ALLOWED_PHONES in monitor.yml when the routing number changes.
