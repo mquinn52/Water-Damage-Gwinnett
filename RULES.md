@@ -51,7 +51,7 @@ numbers below are unchanged; rule IDs sit beside them so existing citations stil
 ## 4. Safety information `WDG-CLAIMS`
 - 4.1 Life-safety guidance comes first: call 911 for immediate danger; don't enter standing water near electricity.
 - 4.2 Third-party numbers (like the county 24/7 line, 678-376-7000) are verified against the official source; the research loop watches the county contact page.
-- 4.3 Health statements about mold are cited (EPA) and never diagnostic. Mold timing uses only the registry's `EPA_MOLD_EN` sentence, verbatim, with the EPA source linked. Exceptions to the banned-language rules are exact and narrow (registry `allowlist_phrases`); an exception never licenses a similar claim.
+- 4.3 Health statements about mold are cited (EPA) and never diagnostic. Mold timing uses only EPA's exact wording: the registry's `EPA_MOLD_EN` on English pages and `EPA_MOLD_ES` on Spanish pages, quoted verbatim and linked to the EPA source in the page's language (approved by Matthew Oct 31, 2026). No other variations. Exceptions to the banned-language rules are exact and narrow (registry `allowlist_phrases`); an exception never licenses a similar claim.
 
 ## 5. Privacy
 - 5.1 The privacy policy names every tracker and vendor (currently Google Analytics 4 and the call-routing platform) and is updated before a vendor changes, including a switch to a new call network's tracking.
@@ -110,7 +110,7 @@ the chosen offer's rules before activating it.
 - 9.19 Payouts go through Tipalti (ACH, wire, PayPal or e-check) to the Guardian Bridge BlueVine account, 1–3 business days after a withdrawal request. Confirm the minimum and payout cycle on the dashboard.
 
 ## Changelog
-- 2026-10-31: v2.1 structure (Project Guidelines approved by Matthew): added section 0 (authority, rule language, evidence labels, registry, records, PR workflow, page retirement, dates, cross-site ban); rule IDs beside section headings; 1.4 made a review event; 3.6 SEO thresholds and 3.7 bilingual parity added; 4.3 tied to the registry; 9.16 Ringba scoped to the Marketcall case. 0.1 separates one-time approvals from standing-rule changes; 0.4 makes the registry the owner of exact text. County line re-verified on the county contact page. No live page changes.
+- 2026-10-31: v2.1 structure (Project Guidelines approved by Matthew): added section 0 (authority, rule language, evidence labels, registry, records, PR workflow, page retirement, dates, cross-site ban); rule IDs beside section headings; 1.4 made a review event; 3.6 SEO thresholds and 3.7 bilingual parity added; 4.3 tied to the registry; 9.16 Ringba scoped to the Marketcall case. 0.1 separates one-time approvals from standing-rule changes; 0.4 makes the registry the owner of exact text. 4.3 now uses EPA's exact English and Spanish wording (registry `EPA_MOLD_EN`/`EPA_MOLD_ES`). County line re-verified on the county contact page. No live page changes.
 - 2026-10-29: Section 9 header updated: Marketcall account approved.
 - 2026-10-29: Added section 9 (Marketcall rules, from its help center and signup agreement).
 - 2026-10-26: 8.7 widened to all four social profiles; social playbook moved to SOCIAL.md.

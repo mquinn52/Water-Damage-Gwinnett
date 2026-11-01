@@ -46,8 +46,21 @@
       "rule": "WDG-DISCLOSURE (RULES.md 9.4)"
     },
     "EPA_MOLD_EN": {
-      "text": "The U.S. EPA advises drying water-damaged materials within 24 to 48 hours to help prevent mold growth.",
-      "where": "Any English page that states mold timing; link the EPA source",
+      "text": "It is important to dry water-damaged areas and items within 24-48 hours to prevent mold growth.",
+      "lead": "The U.S. EPA says: “…”",
+      "source": "https://www.epa.gov/mold/how-do-i-get-rid-mold",
+      "source_updated": "2026-09-08",
+      "verified": "2026-10-31",
+      "where": "Any English page that states mold timing; quoted exactly, visible quote linked to the source",
+      "rule": "WDG-CLAIMS (RULES.md 4.3)"
+    },
+    "EPA_MOLD_ES": {
+      "text": "Es importante secar los lugares y objetos dañados por el agua en las siguientes 24 a 48 horas a fin de evitar que crezca el moho.",
+      "lead": "La EPA de EE. UU. indica: “…”",
+      "source": "https://espanol.epa.gov/cai/acerca-del-moho",
+      "source_updated": "2026-10-13",
+      "verified": "2026-10-31",
+      "where": "Any Spanish page that states mold timing; quoted exactly, visible quote linked to the source",
       "rule": "WDG-CLAIMS (RULES.md 4.3)"
     }
   },
@@ -56,9 +69,5 @@
     "24/7": "Only when it describes PHONE_COUNTY, the county's own line",
     "Emergency": "Only as a neutral label or content category",
     "Call": "The footer call button label"
-  },
-  "open_items": [
-    "EPA_MOLD_ES: no single Spanish canonical sentence exists yet; Spanish pages use several wordings. Matthew to approve one before PR 3 enforces it.",
-    "English pages carry EPA paraphrases that differ from EPA_MOLD_EN (see the PR description). No live copy changes in this PR; listed for a follow-up copy PR."
-  ]
+  }
 }
